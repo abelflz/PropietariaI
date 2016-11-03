@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gestion_InventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="almacen">
+    <Key>
+      <PropertyRef Name="idAlmacen" />
+    </Key>
+    <Property Name="idAlmacen" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion_almacen" Type="varchar" MaxLength="100" />
+    <Property Name="estado_almacen" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AlmacenXInventario">
+    <Key>
+      <PropertyRef Name="IdAlmacenXInventario" />
+    </Key>
+    <Property Name="idAlmacen" Type="varchar" MaxLength="50" />
+    <Property Name="idTipoInventario" Type="varchar" MaxLength="50" />
+    <Property Name="cantidad_AlmacenXInventario" Type="int" />
+    <Property Name="IdAlmacenXInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="idArticulo" />
+    </Key>
+    <Property Name="idArticulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion_articulo" Type="varchar" MaxLength="100" />
+    <Property Name="idTipoInventario" Type="varchar" MaxLength="50" />
+    <Property Name="costoUnitario" Type="int" />
+    <Property Name="estado_articulo" Type="varchar" MaxLength="50" />
+    <Property Name="existencia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipoinventario">
+    <Key>
+      <PropertyRef Name="idTipoInventario" />
+    </Key>
+    <Property Name="idTipoInventario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion_inventario" Type="varchar" MaxLength="100" />
+    <Property Name="cuentacontable_inventario" Type="varchar" MaxLength="50" />
+    <Property Name="estado_inventario" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="transaccion">
+    <Key>
+      <PropertyRef Name="idTransaccion" />
+    </Key>
+    <Property Name="idTransaccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idArticulo" Type="varchar" MaxLength="50" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="cantidad_transaccion" Type="int" />
+    <Property Name="costo" Type="int" />
+  </EntityType>
+  <Association Name="FK__AlmacenXI__canti__1367E606">
+    <End Role="almacen" Type="Self.almacen" Multiplicity="0..1" />
+    <End Role="AlmacenXInventario" Type="Self.AlmacenXInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacen">
+        <PropertyRef Name="idAlmacen" />
+      </Principal>
+      <Dependent Role="AlmacenXInventario">
+        <PropertyRef Name="idAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AlmacenXI__idTip__145C0A3F">
+    <End Role="tipoinventario" Type="Self.tipoinventario" Multiplicity="0..1" />
+    <End Role="AlmacenXInventario" Type="Self.AlmacenXInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoinventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Principal>
+      <Dependent Role="AlmacenXInventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__articulo__existe__173876EA">
+    <End Role="tipoinventario" Type="Self.tipoinventario" Multiplicity="0..1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoinventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="idTipoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacci__costo__1A14E395">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="0..1" />
+    <End Role="transaccion" Type="Self.transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idArticulo" />
+      </Principal>
+      <Dependent Role="transaccion">
+        <PropertyRef Name="idArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Gestion_InventarioModelStoreContainer">
+    <EntitySet Name="almacen" EntityType="Self.almacen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlmacenXInventario" EntityType="Self.AlmacenXInventario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipoinventario" EntityType="Self.tipoinventario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaccion" EntityType="Self.transaccion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AlmacenXI__canti__1367E606" Association="Self.FK__AlmacenXI__canti__1367E606">
+      <End Role="almacen" EntitySet="almacen" />
+      <End Role="AlmacenXInventario" EntitySet="AlmacenXInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AlmacenXI__idTip__145C0A3F" Association="Self.FK__AlmacenXI__idTip__145C0A3F">
+      <End Role="tipoinventario" EntitySet="tipoinventario" />
+      <End Role="AlmacenXInventario" EntitySet="AlmacenXInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__articulo__existe__173876EA" Association="Self.FK__articulo__existe__173876EA">
+      <End Role="tipoinventario" EntitySet="tipoinventario" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacci__costo__1A14E395" Association="Self.FK__transacci__costo__1A14E395">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="transaccion" EntitySet="transaccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

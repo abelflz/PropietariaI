@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gestion_InventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="almacen">
+    <Key>
+      <PropertyRef Name="idAlmacen" />
+    </Key>
+    <Property Name="idAlmacen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion_almacen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="estado_almacen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AlmacenXInventario" Relationship="Self.FK__AlmacenXI__canti__1367E606" FromRole="almacen" ToRole="AlmacenXInventario" />
+  </EntityType>
+  <EntityType Name="AlmacenXInventario">
+    <Key>
+      <PropertyRef Name="IdAlmacenXInventario" />
+    </Key>
+    <Property Name="idAlmacen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idTipoInventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cantidad_AlmacenXInventario" Type="Int32" />
+    <Property Name="IdAlmacenXInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="almacen" Relationship="Self.FK__AlmacenXI__canti__1367E606" FromRole="AlmacenXInventario" ToRole="almacen" />
+    <NavigationProperty Name="tipoinventario" Relationship="Self.FK__AlmacenXI__idTip__145C0A3F" FromRole="AlmacenXInventario" ToRole="tipoinventario" />
+  </EntityType>
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="idArticulo" />
+    </Key>
+    <Property Name="idArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion_articulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idTipoInventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="costoUnitario" Type="Int32" />
+    <Property Name="estado_articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="existencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tipoinventario" Relationship="Self.FK__articulo__existe__173876EA" FromRole="articulo" ToRole="tipoinventario" />
+    <NavigationProperty Name="transaccion" Relationship="Self.FK__transacci__costo__1A14E395" FromRole="articulo" ToRole="transaccion" />
+  </EntityType>
+  <EntityType Name="tipoinventario">
+    <Key>
+      <PropertyRef Name="idTipoInventario" />
+    </Key>
+    <Property Name="idTipoInventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion_inventario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cuentacontable_inventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado_inventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AlmacenXInventario" Relationship="Self.FK__AlmacenXI__idTip__145C0A3F" FromRole="tipoinventario" ToRole="AlmacenXInventario" />
+    <NavigationProperty Name="articulo" Relationship="Self.FK__articulo__existe__173876EA" FromRole="tipoinventario" ToRole="articulo" />
+  </EntityType>
+  <EntityType Name="transaccion">
+    <Key>
+      <PropertyRef Name="idTransaccion" />
+    </Key>
+    <Property Name="idTransaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="cantidad_transaccion" Type="Int32" />
+    <Property Name="costo" Type="Int32" />
+    <NavigationProperty Name="articulo" Relationship="Self.FK__transacci__costo__1A14E395" FromRole="transaccion" ToRole="articulo" />
+  </EntityType>
+  <Association Name="FK__AlmacenXI__canti__1367E606">
+    <End Role="almacen" Type="Self.almacen" Multiplicity="0..1" />
+    <End Role="AlmacenXInventario" Type="Self.AlmacenXInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacen">
+        <PropertyRef Name="idAlmacen" />
+      </Principal>
+      <Dependent Role="AlmacenXInventario">
+        <PropertyRef Name="idAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AlmacenXI__idTip__145C0A3F">
+    <End Role="tipoinventario" Type="Self.tipoinventario" Multiplicity="0..1" />
+    <End Role="AlmacenXInventario" Type="Self.AlmacenXInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoinventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Principal>
+      <Dependent Role="AlmacenXInventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__articulo__existe__173876EA">
+    <End Role="tipoinventario" Type="Self.tipoinventario" Multiplicity="0..1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoinventario">
+        <PropertyRef Name="idTipoInventario" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="idTipoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacci__costo__1A14E395">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="0..1" />
+    <End Role="transaccion" Type="Self.transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idArticulo" />
+      </Principal>
+      <Dependent Role="transaccion">
+        <PropertyRef Name="idArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Gestion_InventarioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="almacen" EntityType="Self.almacen" />
+    <EntitySet Name="AlmacenXInventario" EntityType="Self.AlmacenXInventario" />
+    <EntitySet Name="articulo" EntityType="Self.articulo" />
+    <EntitySet Name="tipoinventario" EntityType="Self.tipoinventario" />
+    <EntitySet Name="transaccion" EntityType="Self.transaccion" />
+    <AssociationSet Name="FK__AlmacenXI__canti__1367E606" Association="Self.FK__AlmacenXI__canti__1367E606">
+      <End Role="almacen" EntitySet="almacen" />
+      <End Role="AlmacenXInventario" EntitySet="AlmacenXInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AlmacenXI__idTip__145C0A3F" Association="Self.FK__AlmacenXI__idTip__145C0A3F">
+      <End Role="tipoinventario" EntitySet="tipoinventario" />
+      <End Role="AlmacenXInventario" EntitySet="AlmacenXInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__articulo__existe__173876EA" Association="Self.FK__articulo__existe__173876EA">
+      <End Role="tipoinventario" EntitySet="tipoinventario" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacci__costo__1A14E395" Association="Self.FK__transacci__costo__1A14E395">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="transaccion" EntitySet="transaccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

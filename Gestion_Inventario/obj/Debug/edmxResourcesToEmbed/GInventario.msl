@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Gestion_InventarioModelStoreContainer" CdmEntityContainer="Gestion_InventarioEntities">
+    <EntitySetMapping Name="almacen">
+      <EntityTypeMapping TypeName="Gestion_InventarioModel.almacen">
+        <MappingFragment StoreEntitySet="almacen">
+          <ScalarProperty Name="idAlmacen" ColumnName="idAlmacen" />
+          <ScalarProperty Name="descripcion_almacen" ColumnName="descripcion_almacen" />
+          <ScalarProperty Name="estado_almacen" ColumnName="estado_almacen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlmacenXInventario">
+      <EntityTypeMapping TypeName="Gestion_InventarioModel.AlmacenXInventario">
+        <MappingFragment StoreEntitySet="AlmacenXInventario">
+          <ScalarProperty Name="idAlmacen" ColumnName="idAlmacen" />
+          <ScalarProperty Name="idTipoInventario" ColumnName="idTipoInventario" />
+          <ScalarProperty Name="cantidad_AlmacenXInventario" ColumnName="cantidad_AlmacenXInventario" />
+          <ScalarProperty Name="IdAlmacenXInventario" ColumnName="IdAlmacenXInventario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="articulo">
+      <EntityTypeMapping TypeName="Gestion_InventarioModel.articulo">
+        <MappingFragment StoreEntitySet="articulo">
+          <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
+          <ScalarProperty Name="descripcion_articulo" ColumnName="descripcion_articulo" />
+          <ScalarProperty Name="idTipoInventario" ColumnName="idTipoInventario" />
+          <ScalarProperty Name="costoUnitario" ColumnName="costoUnitario" />
+          <ScalarProperty Name="estado_articulo" ColumnName="estado_articulo" />
+          <ScalarProperty Name="existencia" ColumnName="existencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoinventario">
+      <EntityTypeMapping TypeName="Gestion_InventarioModel.tipoinventario">
+        <MappingFragment StoreEntitySet="tipoinventario">
+          <ScalarProperty Name="idTipoInventario" ColumnName="idTipoInventario" />
+          <ScalarProperty Name="descripcion_inventario" ColumnName="descripcion_inventario" />
+          <ScalarProperty Name="cuentacontable_inventario" ColumnName="cuentacontable_inventario" />
+          <ScalarProperty Name="estado_inventario" ColumnName="estado_inventario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transaccion">
+      <EntityTypeMapping TypeName="Gestion_InventarioModel.transaccion">
+        <MappingFragment StoreEntitySet="transaccion">
+          <ScalarProperty Name="idTransaccion" ColumnName="idTransaccion" />
+          <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cantidad_transaccion" ColumnName="cantidad_transaccion" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
