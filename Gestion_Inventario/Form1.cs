@@ -47,12 +47,43 @@ namespace Gestion_Inventario
                 da.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1")
                 {
-                    MessageBox.Show("Bienvenido " + txtUser.Text, "Acceso Autorizado");
-                    this.Hide();
-                    FrmMenu m = new FrmMenu();
-                    m.ConnectionString = CS.ToString();
-                    m.ShowDialog();
-                    this.Close();
+                    try
+                    {
+                        MessageBox.Show("Bienvenido " + txtUser.Text, "Acceso Autorizado");
+                        string query2 = "select rol from User_Login where User_Name = @a";
+                        SqlCommand cmd = new SqlCommand(query2, con);
+                        cmd.Parameters.Add(new SqlParameter("a", txtUser.Text));
+                        var tip = cmd.ExecuteScalar();
+                        string tipo = tip.ToString();
+                        if (string.IsNullOrEmpty(tipo))
+                        {
+                            MessageBox.Show("Usuario no válido", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (tipo.Equals("Admin"))
+                            {
+                                this.Hide();
+                                FrmMenu m = new FrmMenu();
+                                m.ConnectionString = CS.ToString();
+                                m.ShowDialog();
+                                this.Close();
+                            }
+                            else if (tipo.Equals("User"))
+                            {
+                                this.Hide();
+                                FrmMenUser mm = new FrmMenUser();
+                                mm.ConnectionString = CS.ToString();
+                                mm.ShowDialog();
+                                this.Close();
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("DROGA "+e);
+                    }
+                    
                 }
                 else
                 {

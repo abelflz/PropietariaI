@@ -15,3 +15,4 @@ c:\users\abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_I
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarArticulo.resources
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarTI.resources
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarTransaccion.resources
+C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmMenUser.resources
