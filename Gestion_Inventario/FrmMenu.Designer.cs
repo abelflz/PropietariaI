@@ -86,6 +86,10 @@
             this.Actualizar = new System.Windows.Forms.Button();
             this.SaveArticle = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.h = new System.Windows.Forms.Label();
+            this.d = new System.Windows.Forms.Label();
+            this.dateFilterMayor = new System.Windows.Forms.DateTimePicker();
+            this.dateFilterMenor = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.txtFilterMenor = new System.Windows.Forms.TextBox();
             this.ShowAll = new System.Windows.Forms.Button();
@@ -97,11 +101,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dateFilterMenor = new System.Windows.Forms.DateTimePicker();
-            this.dateFilterMayor = new System.Windows.Forms.DateTimePicker();
-            this.txtFilterMayor = new System.Windows.Forms.TextBox();
-            this.d = new System.Windows.Forms.Label();
-            this.h = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -125,7 +124,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(3, 1);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1031, 535);
@@ -711,7 +710,6 @@
             // 
             this.tabPage3.Controls.Add(this.h);
             this.tabPage3.Controls.Add(this.d);
-            this.tabPage3.Controls.Add(this.txtFilterMayor);
             this.tabPage3.Controls.Add(this.dateFilterMayor);
             this.tabPage3.Controls.Add(this.dateFilterMenor);
             this.tabPage3.Controls.Add(this.comboBox2);
@@ -726,6 +724,42 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Transacciones";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // h
+            // 
+            this.h.AutoSize = true;
+            this.h.Location = new System.Drawing.Point(778, 349);
+            this.h.Name = "h";
+            this.h.Size = new System.Drawing.Size(38, 13);
+            this.h.TabIndex = 9;
+            this.h.Text = "Hasta:";
+            this.h.Visible = false;
+            // 
+            // d
+            // 
+            this.d.AutoSize = true;
+            this.d.Location = new System.Drawing.Point(564, 349);
+            this.d.Name = "d";
+            this.d.Size = new System.Drawing.Size(41, 13);
+            this.d.TabIndex = 8;
+            this.d.Text = "Desde:";
+            this.d.Visible = false;
+            // 
+            // dateFilterMayor
+            // 
+            this.dateFilterMayor.Location = new System.Drawing.Point(781, 377);
+            this.dateFilterMayor.Name = "dateFilterMayor";
+            this.dateFilterMayor.Size = new System.Drawing.Size(200, 20);
+            this.dateFilterMayor.TabIndex = 6;
+            this.dateFilterMayor.Visible = false;
+            // 
+            // dateFilterMenor
+            // 
+            this.dateFilterMenor.Location = new System.Drawing.Point(567, 377);
+            this.dateFilterMenor.Name = "dateFilterMenor";
+            this.dateFilterMenor.Size = new System.Drawing.Size(193, 20);
+            this.dateFilterMenor.TabIndex = 5;
+            this.dateFilterMenor.Visible = false;
             // 
             // comboBox2
             // 
@@ -843,50 +877,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(292, 130);
             this.dataGridView3.TabIndex = 0;
             // 
-            // dateFilterMenor
-            // 
-            this.dateFilterMenor.Location = new System.Drawing.Point(567, 377);
-            this.dateFilterMenor.Name = "dateFilterMenor";
-            this.dateFilterMenor.Size = new System.Drawing.Size(193, 20);
-            this.dateFilterMenor.TabIndex = 5;
-            this.dateFilterMenor.Visible = false;
-            // 
-            // dateFilterMayor
-            // 
-            this.dateFilterMayor.Location = new System.Drawing.Point(781, 377);
-            this.dateFilterMayor.Name = "dateFilterMayor";
-            this.dateFilterMayor.Size = new System.Drawing.Size(200, 20);
-            this.dateFilterMayor.TabIndex = 6;
-            this.dateFilterMayor.Visible = false;
-            // 
-            // txtFilterMayor
-            // 
-            this.txtFilterMayor.Location = new System.Drawing.Point(781, 408);
-            this.txtFilterMayor.Name = "txtFilterMayor";
-            this.txtFilterMayor.Size = new System.Drawing.Size(200, 20);
-            this.txtFilterMayor.TabIndex = 7;
-            this.txtFilterMayor.Visible = false;
-            // 
-            // d
-            // 
-            this.d.AutoSize = true;
-            this.d.Location = new System.Drawing.Point(564, 349);
-            this.d.Name = "d";
-            this.d.Size = new System.Drawing.Size(41, 13);
-            this.d.TabIndex = 8;
-            this.d.Text = "Desde:";
-            this.d.Visible = false;
-            // 
-            // h
-            // 
-            this.h.AutoSize = true;
-            this.h.Location = new System.Drawing.Point(778, 349);
-            this.h.Name = "h";
-            this.h.Size = new System.Drawing.Size(38, 13);
-            this.h.TabIndex = 9;
-            this.h.Text = "Hasta:";
-            this.h.Visible = false;
-            // 
             // FrmMenu
             // 
             this.AllowDrop = true;
@@ -999,7 +989,6 @@
         public System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DateTimePicker dateFilterMenor;
         private System.Windows.Forms.DateTimePicker dateFilterMayor;
-        private System.Windows.Forms.TextBox txtFilterMayor;
         private System.Windows.Forms.Label h;
         private System.Windows.Forms.Label d;
     }
