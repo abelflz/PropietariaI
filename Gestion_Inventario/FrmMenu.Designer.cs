@@ -87,7 +87,7 @@
             this.SaveArticle = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.txtFilter2 = new System.Windows.Forms.TextBox();
+            this.txtFilterMenor = new System.Windows.Forms.TextBox();
             this.ShowAll = new System.Windows.Forms.Button();
             this.BuscarT = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -97,6 +97,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dateFilterMenor = new System.Windows.Forms.DateTimePicker();
+            this.dateFilterMayor = new System.Windows.Forms.DateTimePicker();
+            this.txtFilterMayor = new System.Windows.Forms.TextBox();
+            this.d = new System.Windows.Forms.Label();
+            this.h = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -704,8 +709,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.h);
+            this.tabPage3.Controls.Add(this.d);
+            this.tabPage3.Controls.Add(this.txtFilterMayor);
+            this.tabPage3.Controls.Add(this.dateFilterMayor);
+            this.tabPage3.Controls.Add(this.dateFilterMenor);
             this.tabPage3.Controls.Add(this.comboBox2);
-            this.tabPage3.Controls.Add(this.txtFilter2);
+            this.tabPage3.Controls.Add(this.txtFilterMenor);
             this.tabPage3.Controls.Add(this.ShowAll);
             this.tabPage3.Controls.Add(this.BuscarT);
             this.tabPage3.Controls.Add(this.dataGridView2);
@@ -725,22 +735,24 @@
             "Transaccion ID",
             "Articulo",
             "Tipo",
-            "Costo"});
-            this.comboBox2.Location = new System.Drawing.Point(271, 380);
+            "Costo",
+            "Fecha"});
+            this.comboBox2.Location = new System.Drawing.Point(306, 407);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(207, 21);
             this.comboBox2.TabIndex = 4;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // txtFilter2
+            // txtFilterMenor
             // 
-            this.txtFilter2.Location = new System.Drawing.Point(567, 381);
-            this.txtFilter2.Name = "txtFilter2";
-            this.txtFilter2.Size = new System.Drawing.Size(193, 20);
-            this.txtFilter2.TabIndex = 3;
+            this.txtFilterMenor.Location = new System.Drawing.Point(567, 408);
+            this.txtFilterMenor.Name = "txtFilterMenor";
+            this.txtFilterMenor.Size = new System.Drawing.Size(193, 20);
+            this.txtFilterMenor.TabIndex = 3;
             // 
             // ShowAll
             // 
-            this.ShowAll.Location = new System.Drawing.Point(306, 434);
+            this.ShowAll.Location = new System.Drawing.Point(306, 457);
             this.ShowAll.Name = "ShowAll";
             this.ShowAll.Size = new System.Drawing.Size(172, 23);
             this.ShowAll.TabIndex = 2;
@@ -750,7 +762,7 @@
             // 
             // BuscarT
             // 
-            this.BuscarT.Location = new System.Drawing.Point(590, 434);
+            this.BuscarT.Location = new System.Drawing.Point(596, 457);
             this.BuscarT.Name = "BuscarT";
             this.BuscarT.Size = new System.Drawing.Size(145, 23);
             this.BuscarT.TabIndex = 1;
@@ -764,7 +776,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(242, 19);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(545, 340);
+            this.dataGridView2.Size = new System.Drawing.Size(545, 318);
             this.dataGridView2.TabIndex = 0;
             // 
             // tabPage4
@@ -831,6 +843,50 @@
             this.dataGridView3.Size = new System.Drawing.Size(292, 130);
             this.dataGridView3.TabIndex = 0;
             // 
+            // dateFilterMenor
+            // 
+            this.dateFilterMenor.Location = new System.Drawing.Point(567, 377);
+            this.dateFilterMenor.Name = "dateFilterMenor";
+            this.dateFilterMenor.Size = new System.Drawing.Size(193, 20);
+            this.dateFilterMenor.TabIndex = 5;
+            this.dateFilterMenor.Visible = false;
+            // 
+            // dateFilterMayor
+            // 
+            this.dateFilterMayor.Location = new System.Drawing.Point(781, 377);
+            this.dateFilterMayor.Name = "dateFilterMayor";
+            this.dateFilterMayor.Size = new System.Drawing.Size(200, 20);
+            this.dateFilterMayor.TabIndex = 6;
+            this.dateFilterMayor.Visible = false;
+            // 
+            // txtFilterMayor
+            // 
+            this.txtFilterMayor.Location = new System.Drawing.Point(781, 408);
+            this.txtFilterMayor.Name = "txtFilterMayor";
+            this.txtFilterMayor.Size = new System.Drawing.Size(200, 20);
+            this.txtFilterMayor.TabIndex = 7;
+            this.txtFilterMayor.Visible = false;
+            // 
+            // d
+            // 
+            this.d.AutoSize = true;
+            this.d.Location = new System.Drawing.Point(564, 349);
+            this.d.Name = "d";
+            this.d.Size = new System.Drawing.Size(41, 13);
+            this.d.TabIndex = 8;
+            this.d.Text = "Desde:";
+            this.d.Visible = false;
+            // 
+            // h
+            // 
+            this.h.AutoSize = true;
+            this.h.Location = new System.Drawing.Point(778, 349);
+            this.h.Name = "h";
+            this.h.Size = new System.Drawing.Size(38, 13);
+            this.h.TabIndex = 9;
+            this.h.Text = "Hasta:";
+            this.h.Visible = false;
+            // 
             // FrmMenu
             // 
             this.AllowDrop = true;
@@ -885,7 +941,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtFilter2;
+        private System.Windows.Forms.TextBox txtFilterMenor;
         private System.Windows.Forms.Button ShowAll;
         private System.Windows.Forms.Button BuscarT;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -941,5 +997,10 @@
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.DataGridView dataGridView2;
         public System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DateTimePicker dateFilterMenor;
+        private System.Windows.Forms.DateTimePicker dateFilterMayor;
+        private System.Windows.Forms.TextBox txtFilterMayor;
+        private System.Windows.Forms.Label h;
+        private System.Windows.Forms.Label d;
     }
 }

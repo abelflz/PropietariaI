@@ -305,7 +305,7 @@ namespace Gestion_Inventario
 
             if (comboBox2.Text == "Transaccion ID")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.idTransaccion = '" + txtFilter2.Text + "'", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.idTransaccion = '" + txtFilterMenor.Text + "'", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -315,7 +315,7 @@ namespace Gestion_Inventario
 
             else if (comboBox2.Text == "Articulo")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE a.descripcion_articulo like '%" + txtFilter2.Text + "%'", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE a.descripcion_articulo like '%" + txtFilterMenor.Text + "%'", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -325,7 +325,7 @@ namespace Gestion_Inventario
 
             else if (comboBox2.Text == "Tipo")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.tipo like '%" + txtFilter2.Text + "%'", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.tipo like '%" + txtFilterMenor.Text + "%'", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -335,7 +335,7 @@ namespace Gestion_Inventario
 
             else if (comboBox2.Text == "Costo")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.costo like '%" + txtFilter2.Text + "%'", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.costo like '%" + txtFilterMenor.Text + "%'", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -344,7 +344,7 @@ namespace Gestion_Inventario
             }
 
             Conn.Close();
-            txtFilter2.Text = "";
+            txtFilterMenor.Text = "";
         }
 
         private void DeleteArticle_Click(object sender, EventArgs e)
@@ -825,6 +825,37 @@ namespace Gestion_Inventario
                 textBox6.ReadOnly = true;
                 textBox5.Text = "";
                 textBox6.Text = "";
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox2.Text)
+            {
+                case "Costo":
+                    d.Visible = true;
+                    h.Visible = true;
+                    txtFilterMenor.Visible = true;
+                    txtFilterMayor.Visible = true;
+                    dateFilterMenor.Visible = false;
+                    dateFilterMayor.Visible = false;
+                    break;
+                case "Fecha":
+                    txtFilterMenor.Visible = false;
+                    txtFilterMayor.Visible = false;
+                    dateFilterMenor.Visible = true;
+                    dateFilterMayor.Visible = true;
+                    d.Visible = true;
+                    h.Visible = true;
+                    break;
+                default:
+                    txtFilterMenor.Visible = true;
+                    txtFilterMayor.Visible = false;
+                    dateFilterMenor.Visible = false;
+                    dateFilterMayor.Visible = false;
+                    d.Visible = false;
+                    h.Visible = false;
+                    break;
             }
         }
     }
