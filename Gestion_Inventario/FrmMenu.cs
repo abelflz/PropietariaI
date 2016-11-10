@@ -13,6 +13,8 @@ namespace Gestion_Inventario
 {
     public partial class FrmMenu : Form
     {
+        public string FechaHasta { get; set; }
+        public string FechaDesde { get; set; }
         public string ConnectionString { get; set; }
 
         public string query = "SELECT a.idArticulo as 'ID', a.descripcion_articulo as 'Nombre Articulo', "+
@@ -341,6 +343,21 @@ namespace Gestion_Inventario
                 sda.Fill(data);
                 dataGridView2.DataSource = data;
                 dataGridView2.Refresh();
+            }
+            else if (comboBox2.Text.Equals("Fecha"))
+            { 
+                try
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.fecha between '" + Convert.ToDateTime(dateFilterMenor.Text) + "' and '" + Convert.ToDateTime(dateFilterMayor.Text) + "'", Conn);
+                    DataTable data = new DataTable();
+                    sda.Fill(data);
+                    dataGridView2.DataSource = data;
+                    dataGridView2.Refresh();
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(""+ex);
+                }
+                
             }
 
             Conn.Close();
@@ -832,17 +849,8 @@ namespace Gestion_Inventario
         {
             switch (comboBox2.Text)
             {
-                case "Costo":
-                    d.Visible = true;
-                    h.Visible = true;
-                    txtFilterMenor.Visible = true;
-                    txtFilterMayor.Visible = true;
-                    dateFilterMenor.Visible = false;
-                    dateFilterMayor.Visible = false;
-                    break;
                 case "Fecha":
                     txtFilterMenor.Visible = false;
-                    txtFilterMayor.Visible = false;
                     dateFilterMenor.Visible = true;
                     dateFilterMayor.Visible = true;
                     d.Visible = true;
@@ -850,7 +858,6 @@ namespace Gestion_Inventario
                     break;
                 default:
                     txtFilterMenor.Visible = true;
-                    txtFilterMayor.Visible = false;
                     dateFilterMenor.Visible = false;
                     dateFilterMayor.Visible = false;
                     d.Visible = false;
