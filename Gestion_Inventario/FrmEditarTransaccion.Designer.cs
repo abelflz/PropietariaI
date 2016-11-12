@@ -192,7 +192,7 @@
             this.ClientSize = new System.Drawing.Size(460, 244);
             this.Controls.Add(this.groupBox7);
             this.Name = "FrmEditarTransaccion";
-            this.Text = "FrmEditarTransaccion";
+            this.Text = "Editar Transacción";
             this.Load += new System.EventHandler(this.FrmEditarTransaccion_Load);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();

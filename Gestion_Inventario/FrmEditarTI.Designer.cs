@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbxDI = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.GuardarTipoInventario = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.cbxDI = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,16 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Editar Tipo de Inventario";
+            // 
+            // cbxDI
+            // 
+            this.cbxDI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDI.FormattingEnabled = true;
+            this.cbxDI.Location = new System.Drawing.Point(125, 23);
+            this.cbxDI.Name = "cbxDI";
+            this.cbxDI.Size = new System.Drawing.Size(121, 21);
+            this.cbxDI.TabIndex = 10;
+            this.cbxDI.SelectedIndexChanged += new System.EventHandler(this.cbxDI_SelectedIndexChanged);
             // 
             // comboBox4
             // 
@@ -111,16 +121,6 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Descripción Inventario";
             // 
-            // cbxDI
-            // 
-            this.cbxDI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDI.FormattingEnabled = true;
-            this.cbxDI.Location = new System.Drawing.Point(125, 23);
-            this.cbxDI.Name = "cbxDI";
-            this.cbxDI.Size = new System.Drawing.Size(121, 21);
-            this.cbxDI.TabIndex = 10;
-            this.cbxDI.SelectedIndexChanged += new System.EventHandler(this.cbxDI_SelectedIndexChanged);
-            // 
             // FrmEditarTI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,7 +128,7 @@
             this.ClientSize = new System.Drawing.Size(284, 193);
             this.Controls.Add(this.groupBox2);
             this.Name = "FrmEditarTI";
-            this.Text = "FrmEditarTI";
+            this.Text = "Editar Tipo de Inventario";
             this.Load += new System.EventHandler(this.FrmEditarTI_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

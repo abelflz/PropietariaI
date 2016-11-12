@@ -37,21 +37,21 @@
             this.Buscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.BuscarT = new System.Windows.Forms.Button();
-            this.ShowAll = new System.Windows.Forms.Button();
-            this.txtFilter2 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.txtFilter2 = new System.Windows.Forms.TextBox();
+            this.ShowAll = new System.Windows.Forms.Button();
+            this.BuscarT = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label22 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
@@ -155,56 +155,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(489, 346);
             this.dataGridView1.TabIndex = 8;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(207, 92);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(540, 274);
-            this.dataGridView2.TabIndex = 5;
-            // 
-            // BuscarT
-            // 
-            this.BuscarT.Location = new System.Drawing.Point(550, 441);
-            this.BuscarT.Name = "BuscarT";
-            this.BuscarT.Size = new System.Drawing.Size(145, 23);
-            this.BuscarT.TabIndex = 6;
-            this.BuscarT.Text = "Buscar Transacciones";
-            this.BuscarT.UseVisualStyleBackColor = true;
-            this.BuscarT.Click += new System.EventHandler(this.BuscarT_Click);
-            // 
-            // ShowAll
-            // 
-            this.ShowAll.Location = new System.Drawing.Point(266, 441);
-            this.ShowAll.Name = "ShowAll";
-            this.ShowAll.Size = new System.Drawing.Size(172, 23);
-            this.ShowAll.TabIndex = 7;
-            this.ShowAll.Text = "Mostrar Todos/Actualizar";
-            this.ShowAll.UseVisualStyleBackColor = true;
-            this.ShowAll.Click += new System.EventHandler(this.ShowAll_Click);
-            // 
-            // txtFilter2
-            // 
-            this.txtFilter2.Location = new System.Drawing.Point(527, 388);
-            this.txtFilter2.Name = "txtFilter2";
-            this.txtFilter2.Size = new System.Drawing.Size(193, 20);
-            this.txtFilter2.TabIndex = 8;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Transaccion ID",
-            "Articulo",
-            "Tipo",
-            "Costo"});
-            this.comboBox2.Location = new System.Drawing.Point(231, 387);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(207, 21);
-            this.comboBox2.TabIndex = 9;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label3);
@@ -231,6 +181,56 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Consulta Transacciones";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Transaccion ID",
+            "Articulo",
+            "Tipo",
+            "Costo"});
+            this.comboBox2.Location = new System.Drawing.Point(231, 387);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(207, 21);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // txtFilter2
+            // 
+            this.txtFilter2.Location = new System.Drawing.Point(527, 388);
+            this.txtFilter2.Name = "txtFilter2";
+            this.txtFilter2.Size = new System.Drawing.Size(193, 20);
+            this.txtFilter2.TabIndex = 8;
+            // 
+            // ShowAll
+            // 
+            this.ShowAll.Location = new System.Drawing.Point(266, 441);
+            this.ShowAll.Name = "ShowAll";
+            this.ShowAll.Size = new System.Drawing.Size(172, 23);
+            this.ShowAll.TabIndex = 7;
+            this.ShowAll.Text = "Mostrar Todos/Actualizar";
+            this.ShowAll.UseVisualStyleBackColor = true;
+            this.ShowAll.Click += new System.EventHandler(this.ShowAll_Click);
+            // 
+            // BuscarT
+            // 
+            this.BuscarT.Location = new System.Drawing.Point(550, 441);
+            this.BuscarT.Name = "BuscarT";
+            this.BuscarT.Size = new System.Drawing.Size(145, 23);
+            this.BuscarT.TabIndex = 6;
+            this.BuscarT.Text = "Buscar Transacciones";
+            this.BuscarT.UseVisualStyleBackColor = true;
+            this.BuscarT.Click += new System.EventHandler(this.BuscarT_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(207, 92);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(540, 274);
+            this.dataGridView2.TabIndex = 5;
             // 
             // tabPage3
             // 
@@ -271,15 +271,15 @@
             this.ClientSize = new System.Drawing.Size(980, 540);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmMenUser";
-            this.Text = "FrmMenUser";
+            this.Text = "Visualización Inventario";
             this.Load += new System.EventHandler(this.FrmMenUser_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();

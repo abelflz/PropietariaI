@@ -101,6 +101,25 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.LbArticulo = new System.Windows.Forms.Label();
+            this.LbTipo = new System.Windows.Forms.Label();
+            this.gbFecha = new System.Windows.Forms.GroupBox();
+            this.DateHastaRep = new System.Windows.Forms.DateTimePicker();
+            this.DateDesdeRep = new System.Windows.Forms.DateTimePicker();
+            this.LbHasta = new System.Windows.Forms.Label();
+            this.LbDesde = new System.Windows.Forms.Label();
+            this.cbxRepTipo = new System.Windows.Forms.ComboBox();
+            this.cbxRepArt = new System.Windows.Forms.ComboBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,6 +135,11 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.gbFecha.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -124,6 +148,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -877,6 +902,210 @@
             this.dataGridView3.Size = new System.Drawing.Size(292, 130);
             this.dataGridView3.TabIndex = 0;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox9);
+            this.tabPage5.Controls.Add(this.groupBox8);
+            this.tabPage5.Controls.Add(this.groupBox4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1023, 509);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Reportes";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(91, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Generar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button7);
+            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.cbxRepArt);
+            this.groupBox4.Controls.Add(this.cbxRepTipo);
+            this.groupBox4.Controls.Add(this.LbTipo);
+            this.groupBox4.Controls.Add(this.LbArticulo);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.gbFecha);
+            this.groupBox4.Location = new System.Drawing.Point(23, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(262, 311);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Transacción";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.button2);
+            this.groupBox8.Location = new System.Drawing.Point(316, 25);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(205, 235);
+            this.groupBox8.TabIndex = 2;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Tipo de Inventario";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(66, 197);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Generar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.button4);
+            this.groupBox9.Location = new System.Drawing.Point(806, 44);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(200, 100);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Artículos";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(60, 71);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Generar";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // LbArticulo
+            // 
+            this.LbArticulo.AutoSize = true;
+            this.LbArticulo.Location = new System.Drawing.Point(24, 44);
+            this.LbArticulo.Name = "LbArticulo";
+            this.LbArticulo.Size = new System.Drawing.Size(44, 13);
+            this.LbArticulo.TabIndex = 4;
+            this.LbArticulo.Text = "Artículo";
+            this.LbArticulo.Visible = false;
+            // 
+            // LbTipo
+            // 
+            this.LbTipo.AutoSize = true;
+            this.LbTipo.Location = new System.Drawing.Point(40, 100);
+            this.LbTipo.Name = "LbTipo";
+            this.LbTipo.Size = new System.Drawing.Size(28, 13);
+            this.LbTipo.TabIndex = 5;
+            this.LbTipo.Text = "Tipo";
+            this.LbTipo.Visible = false;
+            // 
+            // gbFecha
+            // 
+            this.gbFecha.Controls.Add(this.DateHastaRep);
+            this.gbFecha.Controls.Add(this.DateDesdeRep);
+            this.gbFecha.Controls.Add(this.LbHasta);
+            this.gbFecha.Controls.Add(this.LbDesde);
+            this.gbFecha.Location = new System.Drawing.Point(27, 157);
+            this.gbFecha.Name = "gbFecha";
+            this.gbFecha.Size = new System.Drawing.Size(200, 117);
+            this.gbFecha.TabIndex = 11;
+            this.gbFecha.TabStop = false;
+            this.gbFecha.Text = "Fecha";
+            this.gbFecha.Visible = false;
+            // 
+            // DateHastaRep
+            // 
+            this.DateHastaRep.Location = new System.Drawing.Point(11, 86);
+            this.DateHastaRep.Name = "DateHastaRep";
+            this.DateHastaRep.Size = new System.Drawing.Size(181, 20);
+            this.DateHastaRep.TabIndex = 14;
+            this.DateHastaRep.Visible = false;
+            // 
+            // DateDesdeRep
+            // 
+            this.DateDesdeRep.Location = new System.Drawing.Point(11, 37);
+            this.DateDesdeRep.Name = "DateDesdeRep";
+            this.DateDesdeRep.Size = new System.Drawing.Size(181, 20);
+            this.DateDesdeRep.TabIndex = 13;
+            this.DateDesdeRep.Visible = false;
+            // 
+            // LbHasta
+            // 
+            this.LbHasta.AutoSize = true;
+            this.LbHasta.Location = new System.Drawing.Point(11, 70);
+            this.LbHasta.Name = "LbHasta";
+            this.LbHasta.Size = new System.Drawing.Size(35, 13);
+            this.LbHasta.TabIndex = 12;
+            this.LbHasta.Text = "Hasta";
+            this.LbHasta.Visible = false;
+            // 
+            // LbDesde
+            // 
+            this.LbDesde.AutoSize = true;
+            this.LbDesde.Location = new System.Drawing.Point(8, 21);
+            this.LbDesde.Name = "LbDesde";
+            this.LbDesde.Size = new System.Drawing.Size(38, 13);
+            this.LbDesde.TabIndex = 11;
+            this.LbDesde.Text = "Desde";
+            this.LbDesde.Visible = false;
+            // 
+            // cbxRepTipo
+            // 
+            this.cbxRepTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRepTipo.FormattingEnabled = true;
+            this.cbxRepTipo.Items.AddRange(new object[] {
+            "Entrada",
+            "Salida",
+            "Ajuste Costo",
+            "Ajuste Cantidad"});
+            this.cbxRepTipo.Location = new System.Drawing.Point(74, 97);
+            this.cbxRepTipo.Name = "cbxRepTipo";
+            this.cbxRepTipo.Size = new System.Drawing.Size(153, 21);
+            this.cbxRepTipo.TabIndex = 12;
+            this.cbxRepTipo.Visible = false;
+            // 
+            // cbxRepArt
+            // 
+            this.cbxRepArt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRepArt.FormattingEnabled = true;
+            this.cbxRepArt.Location = new System.Drawing.Point(74, 41);
+            this.cbxRepArt.Name = "cbxRepArt";
+            this.cbxRepArt.Size = new System.Drawing.Size(153, 21);
+            this.cbxRepArt.TabIndex = 13;
+            this.cbxRepArt.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(74, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(128, 23);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "Buscar por Artículo";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(74, 128);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(111, 23);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "Buscar por Fecha";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(54, 68);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(165, 23);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "Buscar por Tipo Transacción";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // FrmMenu
             // 
             this.AllowDrop = true;
@@ -912,6 +1141,13 @@
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.gbFecha.ResumeLayout(false);
+            this.gbFecha.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -991,5 +1227,24 @@
         private System.Windows.Forms.DateTimePicker dateFilterMayor;
         private System.Windows.Forms.Label h;
         private System.Windows.Forms.Label d;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label LbTipo;
+        private System.Windows.Forms.Label LbArticulo;
+        private System.Windows.Forms.ComboBox cbxRepArt;
+        private System.Windows.Forms.ComboBox cbxRepTipo;
+        private System.Windows.Forms.GroupBox gbFecha;
+        private System.Windows.Forms.DateTimePicker DateHastaRep;
+        private System.Windows.Forms.DateTimePicker DateDesdeRep;
+        private System.Windows.Forms.Label LbHasta;
+        private System.Windows.Forms.Label LbDesde;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
     }
 }

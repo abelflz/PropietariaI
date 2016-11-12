@@ -73,6 +73,7 @@ namespace Gestion_Inventario
             {
                 cbxDelArt.Items.Add(sqlReader["descripcion_articulo"].ToString());
                 cbxDescArtT.Items.Add(sqlReader["descripcion_articulo"].ToString());
+                cbxRepArt.Items.Add(sqlReader["descripcion_articulo"].ToString());
             }
         }
 
@@ -537,7 +538,7 @@ namespace Gestion_Inventario
                                 MessageBox.Show(cmd6.ExecuteNonQuery() + " Articulo se ha actualizado");
                             }else
                             {
-                                
+                                MessageBox.Show("Valor digitado debe ser positivo", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);   
                             } 
                         }
 
@@ -863,6 +864,64 @@ namespace Gestion_Inventario
                     d.Visible = false;
                     h.Visible = false;
                     break;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConnectionString;
+            con.Open();
+
+            string query = "select * from transacciones";
+            query += " where 1 = 1 ";
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (LbArticulo.Visible == false && cbxRepArt.Visible == false)
+            {
+                LbArticulo.Visible = true;
+                cbxRepArt.Visible = true;
+            }
+            else
+            {
+                LbArticulo.Visible = false;
+                cbxRepArt.Visible = false;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (LbTipo.Visible == false && cbxRepTipo.Visible == false) {
+                LbTipo.Visible = true;
+                cbxRepTipo.Visible = true;
+            }
+            else
+            {
+                LbTipo.Visible = false;
+                cbxRepTipo.Visible = false;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (gbFecha.Visible == false && LbDesde.Visible == false && LbHasta.Visible == false && DateDesdeRep.Visible == false && DateHastaRep.Visible == false)
+            {
+                gbFecha.Visible = true;
+                LbDesde.Visible = true;
+                LbHasta.Visible = true;
+                DateDesdeRep.Visible = true;
+                DateHastaRep.Visible = true;
+            }
+            else
+            {
+                gbFecha.Visible = false;
+                LbDesde.Visible = false;
+                LbHasta.Visible = false;
+                DateDesdeRep.Visible = false;
+                DateHastaRep.Visible = false;
             }
         }
     }
