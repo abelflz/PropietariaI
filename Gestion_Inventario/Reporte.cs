@@ -32,36 +32,36 @@ namespace Gestion_Inventario
             con.ConnectionString = ConnectionString;
             con.Open();
             string q = "";
-            string query = "SELECT idTransaccion as 'ID Transaccion',"+
-                " a.descripcion_articulo as 'Articulo', t.tipo as 'Tipo de Transaccion',"+ 
+            string query = "SELECT idTransaccion as 'ID',"+
+                " a.descripcion_articulo as 'Articulo', t.tipo as 'Tipo',"+ 
                 " t.fecha as 'Fecha', t.cantidad_transaccion as 'Cantidad', costo as 'Costo'"+
-                " FROM transaccion t INNER JOIN articulo a ON t.idArticulo = a.idArticulo";
+                " FROM transaccion t INNER JOIN articulo a ON t.idArticulo = a.idArticulo ";
             query += " where 1 = 1 ";
 
             if (!(string.IsNullOrEmpty(Darticulo)))
             {
-                q = "select idArticulo from articulo where descripcion_articulo = '" +Darticulo + "'";
+                q = "select idArticulo from articulo where descripcion_articulo = '" +Darticulo + "' ";
                 SqlCommand cmdq = new SqlCommand(q, con);
                 var i = cmdq.ExecuteScalar();
                 int ArticuloID = Convert.ToInt32(i);
-                query += " and a.idArticulo = '" + ArticuloID + "'";
+                query += " and a.idArticulo = '" + ArticuloID + "' ";
             }
             if (!(string.IsNullOrEmpty(tipo)))
             {
-                query += " and t.tipo = '" + tipo + "'";
+                query += " and t.tipo = '" + tipo + "' ";
             }
             if (estadoFecha == "si")
             {
                 if (Convert.ToDateTime(FechaDesde).Date < Convert.ToDateTime(FechaHasta).Date)
                 {
-                    query += " and t.fecha between '" + Convert.ToDateTime(FechaDesde) + "' and '" + Convert.ToDateTime(FechaHasta) + "'";
+                    query += " and t.fecha between '" + Convert.ToDateTime(FechaDesde) + "' and '" + Convert.ToDateTime(FechaHasta) + "' ";
                 }
                 else
                 {
                     if (Convert.ToDateTime(FechaDesde).Date == Convert.ToDateTime(FechaHasta).Date)
                     {
                         MessageBox.Show("Las fechas son iguales", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        query += " and t.fecha = '" + Convert.ToDateTime(FechaDesde) + "'";
+                        query += " and t.fecha = '" + Convert.ToDateTime(FechaDesde) + "' ";
                     }
                     else
                     {
@@ -73,11 +73,8 @@ namespace Gestion_Inventario
             SqlDataAdapter da = new SqlDataAdapter(query, con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-
-            FrmMenu menu = new FrmMenu();
-            menu.ConnectionString = ConnectionString;
-
-            /*
+            con.Close();
+            
             ReportDataSource rds = new ReportDataSource();
             rds.Value = dt;
             rds.Name = "DataSet1";
@@ -87,7 +84,14 @@ namespace Gestion_Inventario
             rpvReporte.LocalReport.ReportPath = @"Report1.rdlc";
             rpvReporte.LocalReport.Refresh();
             rpvReporte.RefreshReport();
-            this.rpvReporte.RefreshReport();*/
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmMenu menu = new FrmMenu();
+            menu.ConnectionString = ConnectionString;
+            menu.ShowDialog();
+            this.Close();
         }
     }
 }

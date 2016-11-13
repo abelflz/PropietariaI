@@ -24,6 +24,23 @@ namespace Gestion_Inventario
             LlenarDGVArticulo();
             LlenarDGVTransaccion();
             LlenarDGVTipoTransaccion();
+            LlenarCbxArt();
+        }
+
+        public void LlenarCbxArt()
+        {
+            SqlConnection Conn = new SqlConnection();
+            Conn.ConnectionString = ConnectionString;
+            Conn.Open();
+            string query = "select descripcion_articulo from articulo";
+            SqlCommand cmd = new SqlCommand(query, Conn);
+
+            SqlDataReader sqlReader = cmd.ExecuteReader();
+
+            while (sqlReader.Read())
+            {
+                cbxArtD.Items.Add(sqlReader["descripcion_articulo"].ToString());
+            }
         }
 
         private void LlenarDGVTipoTransaccion()
@@ -147,7 +164,7 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Nombre Articulo")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + txtFilter.Text + "%' ORDER BY a.descripcion_articulo", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + cbxArtD.Text + "%' ORDER BY a.descripcion_articulo", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -166,7 +183,7 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Estado")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.estado_articulo = '" + txtFilter.Text + "'", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.estado_articulo = '" + cbxEstado.Text + "'", Conn);
 
 
                 DataTable data = new DataTable();
@@ -176,11 +193,17 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Existencia")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
+                if(Convert.ToDouble(txtFilter.Text) < 0)
+                {
+                    MessageBox.Show("No se puede digitar un valor negativo");
+                }else
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
+                    DataTable data = new DataTable();
+                    sda.Fill(data);
+                    dataGridView1.DataSource = data;
+                    dataGridView1.Refresh();
+                }  
             }
 
             Conn.Close();
@@ -228,6 +251,41 @@ namespace Gestion_Inventario
         private void BuscarT_Click(object sender, EventArgs e)
         {
             BusquedaTransaccion();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            this.Hide();
+            f.ShowDialog();
+            this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /* ID
+             Nombre Articulo
+             Costo Unitario
+             Estado
+             Existencia*/
+            switch (comboBox1.SelectedIndex)
+            {
+                case 3:
+                    cbxArtD.Visible = false;
+                    txtFilter.Visible = false;
+                    cbxEstado.Visible = true;
+                    break;
+                case 1:
+                    txtFilter.Visible = false;
+                    cbxEstado.Visible = false;
+                    cbxArtD.Visible = true;
+                    break;
+                default:
+                    cbxEstado.Visible = false;
+                    cbxArtD.Visible = false;
+                    txtFilter.Visible = true;
+                    break;
+            }
         }
     }
 }

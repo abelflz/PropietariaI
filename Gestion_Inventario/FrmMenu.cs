@@ -934,5 +934,13 @@ namespace Gestion_Inventario
             r.ShowDialog();
             this.Hide();
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            this.Hide();
+            f.ShowDialog();
+            this.Close();
+        }
     }
 }

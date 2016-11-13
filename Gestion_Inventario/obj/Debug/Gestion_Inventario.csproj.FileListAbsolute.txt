@@ -14,5 +14,6 @@ C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_I
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.exe
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.pdb
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.csprojResolveAssemblyReference.cache
-C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.Reporte.resources
+C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.cache
+C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.compiled
