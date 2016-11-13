@@ -67,7 +67,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rpvReporte;
-        private System.Windows.Forms.BindingSource TransaccionArticuloBindingSource;
+        
         private System.Windows.Forms.Button button1;
     }
 }

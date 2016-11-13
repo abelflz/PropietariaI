@@ -135,6 +135,7 @@
     <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmMenu.resources" />
     <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmMenUser.resources" />
     <EmbeddedResource Include="obj\Debug\Gestion_Inventario.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.Reporte.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -172,6 +173,8 @@
     <None Include="obj\Debug\edmxResourcesToEmbed\Login.ssdl" />
     <None Include="obj\Debug\Gestion_Inventario.csproj.GenerateResource.Cache" />
     <None Include="obj\Debug\Gestion_Inventario.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\RdlCompile.cache" />
+    <None Include="obj\Debug\RdlCompile.compiled" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -29,15 +29,8 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.All = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.Buscar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Logout = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbxDelT = new System.Windows.Forms.ComboBox();
             this.EliminarTransaccion = new System.Windows.Forms.Button();
@@ -86,9 +79,11 @@
             this.Actualizar = new System.Windows.Forms.Button();
             this.SaveArticle = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.BuscarT = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.cbxRepArt = new System.Windows.Forms.ComboBox();
             this.cbxRepTipo = new System.Windows.Forms.ComboBox();
@@ -102,25 +97,23 @@
             this.LbDesde = new System.Windows.Forms.Label();
             this.ShowAll = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.h = new System.Windows.Forms.Label();
-            this.d = new System.Windows.Forms.Label();
-            this.BuscarT = new System.Windows.Forms.Button();
-            this.dateFilterMayor = new System.Windows.Forms.DateTimePicker();
-            this.dateFilterMenor = new System.Windows.Forms.DateTimePicker();
-            this.txtFilterMenor = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Logout = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gBusqueda = new System.Windows.Forms.GroupBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.All = new System.Windows.Forms.Button();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbxCriterio = new System.Windows.Forms.ComboBox();
+            this.Find = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -132,10 +125,12 @@
             this.groupBox4.SuspendLayout();
             this.gbFecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox8.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.gBusqueda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -144,101 +139,12 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1031, 535);
+            this.tabControl1.Size = new System.Drawing.Size(1036, 515);
             this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.All);
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.txtFilter);
-            this.tabPage1.Controls.Add(this.Buscar);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1023, 509);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Consulta de Artículos";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(384, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(284, 38);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Consulta de Articulos";
-            // 
-            // All
-            // 
-            this.All.Location = new System.Drawing.Point(566, 463);
-            this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(134, 23);
-            this.All.TabIndex = 6;
-            this.All.Text = "Ver Todos/Actualizar";
-            this.All.UseVisualStyleBackColor = true;
-            this.All.Click += new System.EventHandler(this.All_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ID",
-            "Nombre Articulo",
-            "Costo Unitario",
-            "Estado",
-            "Existencia"});
-            this.comboBox1.Location = new System.Drawing.Point(379, 421);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.Location = new System.Drawing.Point(591, 422);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(153, 20);
-            this.txtFilter.TabIndex = 4;
-            // 
-            // Buscar
-            // 
-            this.Buscar.Location = new System.Drawing.Point(369, 463);
-            this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(75, 23);
-            this.Buscar.TabIndex = 3;
-            this.Buscar.Text = "Buscar";
-            this.Buscar.UseVisualStyleBackColor = true;
-            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(279, 424);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Buscar Por Criterio";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Location = new System.Drawing.Point(308, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(436, 346);
-            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -252,10 +158,20 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1023, 509);
+            this.tabPage2.Size = new System.Drawing.Size(1028, 489);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gestionar Inventario y Deslogueo";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Logout
+            // 
+            this.Logout.Location = new System.Drawing.Point(475, 459);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(75, 23);
+            this.Logout.TabIndex = 10;
+            this.Logout.Text = "Desloguear";
+            this.Logout.UseVisualStyleBackColor = true;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // groupBox3
             // 
@@ -731,22 +647,33 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Controls.Add(this.ShowAll);
             this.tabPage3.Controls.Add(this.dataGridView2);
-            this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1023, 509);
+            this.tabPage3.Size = new System.Drawing.Size(1028, 489);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Transacciones";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(202, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(346, 38);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Consulta de Transacciones";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.BuscarT);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.cbxRepArt);
             this.groupBox4.Controls.Add(this.cbxRepTipo);
@@ -756,14 +683,14 @@
             this.groupBox4.Controls.Add(this.gbFecha);
             this.groupBox4.Location = new System.Drawing.Point(714, 42);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(262, 311);
+            this.groupBox4.Size = new System.Drawing.Size(262, 403);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reportes de Transacción";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(54, 68);
+            this.button7.Location = new System.Drawing.Point(54, 78);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(165, 23);
             this.button7.TabIndex = 16;
@@ -773,13 +700,23 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(74, 128);
+            this.button6.Location = new System.Drawing.Point(74, 144);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(111, 23);
             this.button6.TabIndex = 15;
             this.button6.Text = "Buscar por Fecha";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // BuscarT
+            // 
+            this.BuscarT.Location = new System.Drawing.Point(27, 364);
+            this.BuscarT.Name = "BuscarT";
+            this.BuscarT.Size = new System.Drawing.Size(200, 23);
+            this.BuscarT.TabIndex = 1;
+            this.BuscarT.Text = "Buscar Transacciones";
+            this.BuscarT.UseVisualStyleBackColor = true;
+            this.BuscarT.Click += new System.EventHandler(this.BuscarT_Click);
             // 
             // button5
             // 
@@ -810,7 +747,7 @@
             "Salida",
             "Ajuste Costo",
             "Ajuste Cantidad"});
-            this.cbxRepTipo.Location = new System.Drawing.Point(74, 97);
+            this.cbxRepTipo.Location = new System.Drawing.Point(74, 107);
             this.cbxRepTipo.Name = "cbxRepTipo";
             this.cbxRepTipo.Size = new System.Drawing.Size(153, 21);
             this.cbxRepTipo.TabIndex = 12;
@@ -819,7 +756,7 @@
             // LbTipo
             // 
             this.LbTipo.AutoSize = true;
-            this.LbTipo.Location = new System.Drawing.Point(40, 100);
+            this.LbTipo.Location = new System.Drawing.Point(40, 110);
             this.LbTipo.Name = "LbTipo";
             this.LbTipo.Size = new System.Drawing.Size(28, 13);
             this.LbTipo.TabIndex = 5;
@@ -838,7 +775,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(91, 280);
+            this.button1.Location = new System.Drawing.Point(90, 309);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -852,7 +789,7 @@
             this.gbFecha.Controls.Add(this.DateDesdeRep);
             this.gbFecha.Controls.Add(this.LbHasta);
             this.gbFecha.Controls.Add(this.LbDesde);
-            this.gbFecha.Location = new System.Drawing.Point(27, 157);
+            this.gbFecha.Location = new System.Drawing.Point(27, 173);
             this.gbFecha.Name = "gbFecha";
             this.gbFecha.Size = new System.Drawing.Size(200, 117);
             this.gbFecha.TabIndex = 11;
@@ -898,7 +835,7 @@
             // 
             // ShowAll
             // 
-            this.ShowAll.Location = new System.Drawing.Point(242, 351);
+            this.ShowAll.Location = new System.Drawing.Point(274, 406);
             this.ShowAll.Name = "ShowAll";
             this.ShowAll.Size = new System.Drawing.Size(172, 23);
             this.ShowAll.TabIndex = 2;
@@ -911,106 +848,11 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView2.Location = new System.Drawing.Point(72, 27);
+            this.dataGridView2.Location = new System.Drawing.Point(76, 82);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(586, 318);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.h);
-            this.groupBox8.Controls.Add(this.d);
-            this.groupBox8.Controls.Add(this.BuscarT);
-            this.groupBox8.Controls.Add(this.dateFilterMayor);
-            this.groupBox8.Controls.Add(this.dateFilterMenor);
-            this.groupBox8.Controls.Add(this.txtFilterMenor);
-            this.groupBox8.Controls.Add(this.label3);
-            this.groupBox8.Controls.Add(this.comboBox2);
-            this.groupBox8.Location = new System.Drawing.Point(180, 383);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(700, 100);
-            this.groupBox8.TabIndex = 11;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Búsqueda";
-            // 
-            // h
-            // 
-            this.h.AutoSize = true;
-            this.h.Location = new System.Drawing.Point(476, 16);
-            this.h.Name = "h";
-            this.h.Size = new System.Drawing.Size(38, 13);
-            this.h.TabIndex = 14;
-            this.h.Text = "Hasta:";
-            this.h.Visible = false;
-            // 
-            // d
-            // 
-            this.d.AutoSize = true;
-            this.d.Location = new System.Drawing.Point(262, 16);
-            this.d.Name = "d";
-            this.d.Size = new System.Drawing.Size(41, 13);
-            this.d.TabIndex = 13;
-            this.d.Text = "Desde:";
-            this.d.Visible = false;
-            // 
-            // BuscarT
-            // 
-            this.BuscarT.Location = new System.Drawing.Point(479, 70);
-            this.BuscarT.Name = "BuscarT";
-            this.BuscarT.Size = new System.Drawing.Size(200, 23);
-            this.BuscarT.TabIndex = 1;
-            this.BuscarT.Text = "Buscar Transacciones";
-            this.BuscarT.UseVisualStyleBackColor = true;
-            this.BuscarT.Click += new System.EventHandler(this.BuscarT_Click);
-            // 
-            // dateFilterMayor
-            // 
-            this.dateFilterMayor.Location = new System.Drawing.Point(479, 44);
-            this.dateFilterMayor.Name = "dateFilterMayor";
-            this.dateFilterMayor.Size = new System.Drawing.Size(200, 20);
-            this.dateFilterMayor.TabIndex = 12;
-            this.dateFilterMayor.Visible = false;
-            // 
-            // dateFilterMenor
-            // 
-            this.dateFilterMenor.Location = new System.Drawing.Point(265, 44);
-            this.dateFilterMenor.Name = "dateFilterMenor";
-            this.dateFilterMenor.Size = new System.Drawing.Size(193, 20);
-            this.dateFilterMenor.TabIndex = 11;
-            this.dateFilterMenor.Visible = false;
-            // 
-            // txtFilterMenor
-            // 
-            this.txtFilterMenor.Location = new System.Drawing.Point(265, 73);
-            this.txtFilterMenor.Name = "txtFilterMenor";
-            this.txtFilterMenor.Size = new System.Drawing.Size(193, 20);
-            this.txtFilterMenor.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Criterio";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Transaccion ID",
-            "Articulo",
-            "Tipo",
-            "Costo",
-            "Fecha"});
-            this.comboBox2.Location = new System.Drawing.Point(27, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(207, 21);
-            this.comboBox2.TabIndex = 4;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -1022,7 +864,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1023, 509);
+            this.tabPage4.Size = new System.Drawing.Size(1028, 489);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Almacen y Tipo Inventario";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1041,7 +883,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(379, 3);
+            this.label24.Location = new System.Drawing.Point(390, 3);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(274, 38);
             this.label24.TabIndex = 8;
@@ -1072,37 +914,140 @@
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView3.Location = new System.Drawing.Point(357, 44);
+            this.dataGridView3.Location = new System.Drawing.Point(376, 44);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(288, 112);
             this.dataGridView3.TabIndex = 0;
             // 
-            // Logout
+            // tabPage1
             // 
-            this.Logout.Location = new System.Drawing.Point(475, 459);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(75, 23);
-            this.Logout.TabIndex = 10;
-            this.Logout.Text = "Desloguear";
-            this.Logout.UseVisualStyleBackColor = true;
-            this.Logout.Click += new System.EventHandler(this.Logout_Click);
+            this.tabPage1.Controls.Add(this.gBusqueda);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1028, 489);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Consulta de Artículos";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // gBusqueda
+            // 
+            this.gBusqueda.Controls.Add(this.txtFilter);
+            this.gBusqueda.Controls.Add(this.All);
+            this.gBusqueda.Controls.Add(this.cbxEstado);
+            this.gBusqueda.Controls.Add(this.label11);
+            this.gBusqueda.Controls.Add(this.cbxCriterio);
+            this.gBusqueda.Controls.Add(this.Find);
+            this.gBusqueda.Location = new System.Drawing.Point(644, 104);
+            this.gBusqueda.Name = "gBusqueda";
+            this.gBusqueda.Size = new System.Drawing.Size(221, 272);
+            this.gBusqueda.TabIndex = 16;
+            this.gBusqueda.TabStop = false;
+            this.gBusqueda.Text = "Búsqueda";
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Location = new System.Drawing.Point(11, 120);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(190, 20);
+            this.txtFilter.TabIndex = 15;
+            this.txtFilter.Visible = false;
+            // 
+            // All
+            // 
+            this.All.Location = new System.Drawing.Point(44, 227);
+            this.All.Name = "All";
+            this.All.Size = new System.Drawing.Size(134, 23);
+            this.All.TabIndex = 6;
+            this.All.Text = "Ver Todos/Actualizar";
+            this.All.UseVisualStyleBackColor = true;
+            this.All.Click += new System.EventHandler(this.All_Click);
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbxEstado.Location = new System.Drawing.Point(11, 119);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(190, 21);
+            this.cbxEstado.TabIndex = 14;
+            this.cbxEstado.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 47);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Criterio";
+            // 
+            // cbxCriterio
+            // 
+            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCriterio.FormattingEnabled = true;
+            this.cbxCriterio.Items.AddRange(new object[] {
+            "ID",
+            "Nombre Articulo",
+            "Costo Unitario",
+            "Estado",
+            "Existencia"});
+            this.cbxCriterio.Location = new System.Drawing.Point(11, 72);
+            this.cbxCriterio.Name = "cbxCriterio";
+            this.cbxCriterio.Size = new System.Drawing.Size(190, 21);
+            this.cbxCriterio.TabIndex = 12;
+            this.cbxCriterio.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // Find
+            // 
+            this.Find.Location = new System.Drawing.Point(71, 173);
+            this.Find.Name = "Find";
+            this.Find.Size = new System.Drawing.Size(75, 23);
+            this.Find.TabIndex = 10;
+            this.Find.Text = "Buscar";
+            this.Find.UseVisualStyleBackColor = true;
+            this.Find.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(203, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(284, 38);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Consulta de Articulos";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Location = new System.Drawing.Point(126, 65);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(436, 346);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FrmMenu
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 536);
+            this.ClientSize = new System.Drawing.Size(1036, 515);
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Inventario";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1117,17 +1062,21 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.gbFecha.ResumeLayout(false);
             this.gbFecha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.gBusqueda.ResumeLayout(false);
+            this.gBusqueda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1137,10 +1086,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button Buscar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFilter;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button All;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1149,7 +1094,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button ShowAll;
         private System.Windows.Forms.Button BuscarT;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SaveArticle;
         private System.Windows.Forms.TextBox txtExiste;
@@ -1216,13 +1160,13 @@
         private System.Windows.Forms.DateTimePicker DateDesdeRep;
         private System.Windows.Forms.Label LbHasta;
         private System.Windows.Forms.Label LbDesde;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label h;
-        private System.Windows.Forms.Label d;
-        private System.Windows.Forms.DateTimePicker dateFilterMayor;
-        private System.Windows.Forms.DateTimePicker dateFilterMenor;
-        private System.Windows.Forms.TextBox txtFilterMenor;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Logout;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox gBusqueda;
+        private System.Windows.Forms.ComboBox cbxEstado;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbxCriterio;
+        private System.Windows.Forms.Button Find;
+        private System.Windows.Forms.TextBox txtFilter;
     }
 }

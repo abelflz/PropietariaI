@@ -131,59 +131,7 @@ namespace Gestion_Inventario
 
         private void Buscar_Click(object sender, EventArgs e)
         {
-            SqlConnection Conn = new SqlConnection();
-            Conn.ConnectionString = ConnectionString;
-            Conn.Open();
-
-            if (comboBox1.Text == "ID")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query+ " WHERE a.idArticulo = '"+txtFilter.Text+"'", Conn);
-                
-                
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
-            }
-            else if (comboBox1.Text == "Nombre Articulo"){
-                SqlDataAdapter sda = new SqlDataAdapter(query+ " WHERE a.descripcion_articulo like '%"+ txtFilter.Text + "%' ORDER BY a.descripcion_articulo", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
-            }   
-            else if(comboBox1.Text == "Costo Unitario")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.costoUnitario like '%" + txtFilter.Text + "%'", Conn);
-
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
-            }   
-            else if(comboBox1.Text == "Estado")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.estado_articulo = '" + txtFilter.Text + "'", Conn);
-
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
-            } 
-            else if(comboBox1.Text == "Existencia")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
-            }
-
-            Conn.Close();
-            txtFilter.Text = "";
+            
         }
 
         private void All_Click(object sender, EventArgs e)
@@ -300,67 +248,55 @@ namespace Gestion_Inventario
 
         private void BuscarT_Click(object sender, EventArgs e)
         {
-            SqlConnection Conn = new SqlConnection();
-            Conn.ConnectionString = ConnectionString;
-            Conn.Open();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConnectionString;
+            con.Open();
+            string q = "";
+            string query = "SELECT idTransaccion as 'ID'," +
+                " a.descripcion_articulo as 'Articulo', t.tipo as 'Tipo'," +
+                " t.fecha as 'Fecha', t.cantidad_transaccion as 'Cantidad', costo as 'Costo'" +
+                " FROM transaccion t INNER JOIN articulo a ON t.idArticulo = a.idArticulo ";
+            query += " where 1 = 1 ";
 
-            if (comboBox2.Text == "Transaccion ID")
+            if (!(string.IsNullOrEmpty(cbxRepArt.Text)))
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.idTransaccion = '" + txtFilterMenor.Text + "'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
+                q = "select idArticulo from articulo where descripcion_articulo = '" + cbxRepArt.Text + "' ";
+                SqlCommand cmdq = new SqlCommand(q, con);
+                var i = cmdq.ExecuteScalar();
+                int ArticuloID = Convert.ToInt32(i);
+                query += " and a.idArticulo = '" + ArticuloID + "' ";
             }
-
-            else if (comboBox2.Text == "Articulo")
+            if (!(string.IsNullOrEmpty(cbxRepTipo.Text)))
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE a.descripcion_articulo like '%" + txtFilterMenor.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
+                query += " and t.tipo = '" + cbxRepTipo.Text + "' ";
             }
-
-            else if (comboBox2.Text == "Tipo")
+            if (DateDesdeRep.Visible == true && DateHastaRep.Visible == true && LbDesde.Visible == true && LbHasta.Visible == true && gbFecha.Visible == true)
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.tipo like '%" + txtFilterMenor.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-
-            else if (comboBox2.Text == "Costo")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.costo like '%" + txtFilterMenor.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-            else if (comboBox2.Text.Equals("Fecha"))
-            { 
-                try
+                if (Convert.ToDateTime(DateDesdeRep.Text).Date < Convert.ToDateTime(DateHastaRep.Text).Date)
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(query2 + " WHERE t.fecha between '" + Convert.ToDateTime(dateFilterMenor.Text) + "' and '" + Convert.ToDateTime(dateFilterMayor.Text) + "'", Conn);
-                    DataTable data = new DataTable();
-                    sda.Fill(data);
-                    dataGridView2.DataSource = data;
-                    dataGridView2.Refresh();
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(""+ex);
+                    query += " and t.fecha between '" + Convert.ToDateTime(DateDesdeRep.Text) + "' and '" + Convert.ToDateTime(DateHastaRep.Text) + "' ";
                 }
-                
+                else
+                {
+                    if (Convert.ToDateTime(DateDesdeRep.Text).Date == Convert.ToDateTime(DateHastaRep.Text).Date)
+                    {
+                        MessageBox.Show("Las fechas son iguales", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        query += " and t.fecha = '" + Convert.ToDateTime(DateDesdeRep.Text) + "' ";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Las fechas son inversas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        query += " and t.fecha between '" + Convert.ToDateTime(DateHastaRep.Text) + "' and '" + Convert.ToDateTime(DateDesdeRep.Text) + "' ";
+                    }
+                }
             }
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
 
-            Conn.Close();
-            txtFilterMenor.Text = "";
+            dataGridView2.DataSource = dt;
+            dataGridView2.Refresh();
+            con.Close();
         }
 
         private void DeleteArticle_Click(object sender, EventArgs e)
@@ -844,26 +780,7 @@ namespace Gestion_Inventario
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (comboBox2.Text)
-            {
-                case "Fecha":
-                    txtFilterMenor.Visible = false;
-                    dateFilterMenor.Visible = true;
-                    dateFilterMayor.Visible = true;
-                    d.Visible = true;
-                    h.Visible = true;
-                    break;
-                default:
-                    txtFilterMenor.Visible = true;
-                    dateFilterMenor.Visible = false;
-                    dateFilterMayor.Visible = false;
-                    d.Visible = false;
-                    h.Visible = false;
-                    break;
-            }
-        }
+        
 
         private void button5_Click_1(object sender, EventArgs e)
         {
@@ -926,13 +843,14 @@ namespace Gestion_Inventario
             }
             Reporte r = new Reporte();
             r.ConnectionString = this.ConnectionString;
+            r.user = "admin";
             r.FechaDesde = DateDesdeRep.Text;
             r.FechaHasta = DateHastaRep.Text;
             r.Darticulo = cbxRepArt.Text;
             r.tipo = cbxRepTipo.Text;
             r.estadoFecha = estado;
-            r.ShowDialog();
             this.Hide();
+            r.ShowDialog();
         }
 
         private void Logout_Click(object sender, EventArgs e)
@@ -941,6 +859,103 @@ namespace Gestion_Inventario
             this.Hide();
             f.ShowDialog();
             this.Close();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection Conn = new SqlConnection();
+            Conn.ConnectionString = ConnectionString;
+            Conn.Open();
+
+            if (cbxCriterio.Text == "ID")
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.idArticulo = '" + txtFilter.Text + "'", Conn);
+
+
+                DataTable data = new DataTable();
+                sda.Fill(data);
+                dataGridView1.DataSource = data;
+                dataGridView1.Refresh();
+            }
+            else if (cbxCriterio.Text == "Nombre Articulo")
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + txtFilter.Text + "%' ORDER BY a.descripcion_articulo", Conn);
+
+                DataTable data = new DataTable();
+                sda.Fill(data);
+                dataGridView1.DataSource = data;
+                dataGridView1.Refresh();
+            }
+            else if (cbxCriterio.Text == "Costo Unitario")
+            {
+                try
+                {
+                    if(Convert.ToDouble(txtFilter.Text) > -1)
+                    {
+                        SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.costoUnitario like '%" + Convert.ToDouble(txtFilter.Text) + "%'", Conn);
+
+
+                        DataTable data = new DataTable();
+                        sda.Fill(data);
+                        dataGridView1.DataSource = data;
+                        dataGridView1.Refresh();
+                    }else
+                    {
+                        MessageBox.Show("El valor digitado debe ser un número entero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }     
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Valor digitado no válido (Sólo se permiten números enteros positivos)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }   
+            }
+            else if (cbxCriterio.Text == "Estado")
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.estado_articulo = '" + cbxEstado.Text + "'", Conn);
+
+
+                DataTable data = new DataTable();
+                sda.Fill(data);
+                dataGridView1.DataSource = data;
+                dataGridView1.Refresh();
+            }
+            else if (cbxCriterio.Text == "Existencia")
+            {
+                if (Convert.ToDouble(txtFilter.Text) < 0)
+                {
+                    MessageBox.Show("Valor digitado debe ser entero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
+                    DataTable data = new DataTable();
+                    sda.Fill(data);
+                    dataGridView1.DataSource = data;
+                    dataGridView1.Refresh();
+                } 
+            }
+
+            Conn.Close();
+            txtFilter.Text = "";
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbxCriterio.SelectedIndex)
+            {
+                case 3:
+                    txtFilter.Visible = false;
+                    cbxEstado.Visible = true;
+                    break;
+                case 1:
+                    txtFilter.Visible = true;
+                    cbxEstado.Visible = false;
+                    break;
+                default:
+                    cbxEstado.Visible = false;
+                    txtFilter.Visible = true;
+                    break;
+            }
         }
     }
 }

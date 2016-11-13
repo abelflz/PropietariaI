@@ -20,6 +20,7 @@ namespace Gestion_Inventario
         public string FechaDesde { get; set; }
         public string FechaHasta { get; set; }
         public string estadoFecha { get; set; }
+        public string user { get; set; }
 
         public Reporte()
         {
@@ -88,10 +89,23 @@ namespace Gestion_Inventario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmMenu menu = new FrmMenu();
-            menu.ConnectionString = ConnectionString;
-            menu.ShowDialog();
-            this.Close();
+            switch (this.user)
+            {
+                case "admin":
+                    FrmMenu menu = new FrmMenu();
+                    menu.ConnectionString = ConnectionString;
+                    this.Hide();
+                    menu.ShowDialog();
+                    this.Close();
+                    break;
+                case "user":
+                    FrmMenUser menuser = new FrmMenUser();
+                    menuser.ConnectionString = ConnectionString;
+                    this.Hide();
+                    menuser.ShowDialog();
+                    this.Close();
+                    break;
+            }
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Gestion_Inventario
             while (sqlReader.Read())
             {
                 cbxArtD.Items.Add(sqlReader["descripcion_articulo"].ToString());
+                cbxRepArt.Items.Add(sqlReader["descripcion_articulo"].ToString());
             }
         }
 
@@ -61,60 +62,7 @@ namespace Gestion_Inventario
             Conn.Close();
         }
 
-        private void BusquedaTransaccion()
-        {
-            SqlConnection Conn = new SqlConnection();
-            Conn.ConnectionString = ConnectionString;
-            Conn.Open();
-
-            string query = "SELECT idTransaccion as 'ID Transaccion', " +
-                "a.descripcion_articulo as 'Articulo', t.tipo as 'Tipo de Transaccion', "
-                + " t.fecha as 'Fecha', t.cantidad_transaccion as 'Cantidad', costo as 'Costo'"
-                + " FROM transaccion t INNER JOIN articulo a ON t.idArticulo = a.idArticulo";
-
-            if (comboBox2.Text == "Transaccion ID")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE t.idTransaccion = '" + txtFilter2.Text + "'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-
-            else if (comboBox2.Text == "Articulo")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + txtFilter2.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-
-            else if (comboBox2.Text == "Tipo")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE t.tipo like '%" + txtFilter2.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-
-            else if (comboBox2.Text == "Costo")
-            {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE t.costo like '%" + txtFilter2.Text + "%'", Conn);
-
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView2.DataSource = data;
-                dataGridView2.Refresh();
-            }
-
-            Conn.Close();
-            txtFilter2.Text = "";
-        }
+        
 
         private void LlenarDGVTransaccion()
         {
@@ -173,13 +121,27 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Costo Unitario")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.costoUnitario like '%" + txtFilter.Text + "%'", Conn);
+                try
+                {
+                    if (Convert.ToDouble(txtFilter.Text) > -1)
+                    {
+                        SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.costoUnitario like '%" + Convert.ToDouble(txtFilter.Text) + "%'", Conn);
 
 
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
+                        DataTable data = new DataTable();
+                        sda.Fill(data);
+                        dataGridView1.DataSource = data;
+                        dataGridView1.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El valor digitado debe ser un número entero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Valor digitado no válido (Sólo se permiten números enteros positivos)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (comboBox1.Text == "Estado")
             {
@@ -248,11 +210,6 @@ namespace Gestion_Inventario
             LlenarDGVTransaccion();
         }
 
-        private void BuscarT_Click(object sender, EventArgs e)
-        {
-            BusquedaTransaccion();
-        }
-
         private void Logout_Click(object sender, EventArgs e)
         {
             Form1 f = new Form1();
@@ -286,6 +243,131 @@ namespace Gestion_Inventario
                     txtFilter.Visible = true;
                     break;
             }
+        }
+
+        private void BuscarT_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConnectionString;
+            con.Open();
+            string q = "";
+            string query = "SELECT idTransaccion as 'ID'," +
+                " a.descripcion_articulo as 'Articulo', t.tipo as 'Tipo'," +
+                " t.fecha as 'Fecha', t.cantidad_transaccion as 'Cantidad', costo as 'Costo'" +
+                " FROM transaccion t INNER JOIN articulo a ON t.idArticulo = a.idArticulo ";
+            query += " where 1 = 1 ";
+
+            if (!(string.IsNullOrEmpty(cbxRepArt.Text)))
+            {
+                q = "select idArticulo from articulo where descripcion_articulo = '" + cbxRepArt.Text + "' ";
+                SqlCommand cmdq = new SqlCommand(q, con);
+                var i = cmdq.ExecuteScalar();
+                int ArticuloID = Convert.ToInt32(i);
+                query += " and a.idArticulo = '" + ArticuloID + "' ";
+            }
+            if (!(string.IsNullOrEmpty(cbxRepTipo.Text)))
+            {
+                query += " and t.tipo = '" + cbxRepTipo.Text + "' ";
+            }
+            if (DateDesdeRep.Visible == true && DateHastaRep.Visible == true && LbDesde.Visible == true && LbHasta.Visible == true && gbFecha.Visible == true)
+            {
+                if (Convert.ToDateTime(DateDesdeRep.Text).Date < Convert.ToDateTime(DateHastaRep.Text).Date)
+                {
+                    query += " and t.fecha between '" + Convert.ToDateTime(DateDesdeRep.Text) + "' and '" + Convert.ToDateTime(DateHastaRep.Text) + "' ";
+                }
+                else
+                {
+                    if (Convert.ToDateTime(DateDesdeRep.Text).Date == Convert.ToDateTime(DateHastaRep.Text).Date)
+                    {
+                        MessageBox.Show("Las fechas son iguales", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        query += " and t.fecha = '" + Convert.ToDateTime(DateDesdeRep.Text) + "' ";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Las fechas son inversas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        query += " and t.fecha between '" + Convert.ToDateTime(DateHastaRep.Text) + "' and '" + Convert.ToDateTime(DateDesdeRep.Text) + "' ";
+                    }
+                }
+            }
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dataGridView2.DataSource = dt;
+            dataGridView2.Refresh();
+            con.Close();
+        }
+
+        private void FindArticleName_Click(object sender, EventArgs e)
+        {
+            if (LbArticulo.Visible == false && cbxRepArt.Visible == false)
+            {
+                LbArticulo.Visible = true;
+                cbxRepArt.Visible = true;
+            }
+            else
+            {
+                LbArticulo.Visible = false;
+                cbxRepArt.Visible = false;
+            }
+        }
+
+        private void FindType_Click(object sender, EventArgs e)
+        {
+            if (LbTipo.Visible == false && cbxRepTipo.Visible == false)
+            {
+                LbTipo.Visible = true;
+                cbxRepTipo.Visible = true;
+            }
+            else
+            {
+                LbTipo.Visible = false;
+                cbxRepTipo.Visible = false;
+            }
+        }
+
+        private void FindDate_Click(object sender, EventArgs e)
+        {
+            if (gbFecha.Visible == false && LbDesde.Visible == false && LbHasta.Visible == false && DateDesdeRep.Visible == false && DateHastaRep.Visible == false)
+            {
+                gbFecha.Visible = true;
+                LbDesde.Visible = true;
+                LbHasta.Visible = true;
+                DateDesdeRep.Visible = true;
+                DateHastaRep.Visible = true;
+            }
+            else
+            {
+                gbFecha.Visible = false;
+                LbDesde.Visible = false;
+                LbHasta.Visible = false;
+                DateDesdeRep.Visible = false;
+                DateHastaRep.Visible = false;
+            }
+        }
+
+        private void GenReport_Click(object sender, EventArgs e)
+        {
+            string estado = "";
+            if (gbFecha.Visible == false && DateDesdeRep.Visible == false && DateHastaRep.Visible == false)
+            {
+                estado = "no";
+            }
+            else
+            {
+                estado = "si";
+            }
+            Reporte r = new Reporte();
+            r.user = "user";
+            r.ConnectionString = this.ConnectionString;
+            r.FechaDesde = DateDesdeRep.Text;
+            r.FechaHasta = DateHastaRep.Text;
+            r.Darticulo = cbxRepArt.Text;
+            r.tipo = cbxRepTipo.Text;
+            r.estadoFecha = estado;
+            this.Hide();
+            r.ShowDialog();
+            this.Close();
         }
     }
 }
