@@ -41,12 +41,15 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,8 +97,17 @@
     <Compile Include="FrmMenUser.Designer.cs">
       <DependentUpon>FrmMenUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte.Designer.cs">
+      <DependentUpon>Reporte.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +126,13 @@
     <EmbeddedResource Include="FrmMenUser.resx">
       <DependentUpon>FrmMenUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmEditarArticulo.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmEditarTI.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmEditarTransaccion.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmMenu.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.FrmMenUser.resources" />
+    <EmbeddedResource Include="obj\Debug\Gestion_Inventario.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -123,6 +142,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reporte.resx">
+      <DependentUpon>Reporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\Gestion_Inventario.exe.config" />
+    <None Include="bin\Debug\Gestion_Inventario.vshost.exe.config" />
+    <None Include="bin\Debug\Gestion_Inventario.vshost.exe.manifest" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\GInventario.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\GInventario.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\GInventario.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Login.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Login.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\Login.ssdl" />
+    <None Include="obj\Debug\Gestion_Inventario.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\Gestion_Inventario.csprojResolveAssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +174,25 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\Gestion_Inventario.exe" />
+    <Content Include="bin\Debug\Gestion_Inventario.pdb" />
+    <Content Include="bin\Debug\Gestion_Inventario.vshost.exe" />
+    <Content Include="obj\Debug\Gestion_Inventario.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Gestion_Inventario.exe" />
+    <Content Include="obj\Debug\Gestion_Inventario.pdb" />
+    <Content Include="obj\Debug\TempPE\GInventario.cs.dll" />
+    <Content Include="obj\Debug\TempPE\GInventario.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Login.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Login.Designer.cs.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

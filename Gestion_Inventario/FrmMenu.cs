@@ -13,8 +13,6 @@ namespace Gestion_Inventario
 {
     public partial class FrmMenu : Form
     {
-        public string FechaHasta { get; set; }
-        public string FechaDesde { get; set; }
         public string ConnectionString { get; set; }
 
         public string query = "SELECT a.idArticulo as 'ID', a.descripcion_articulo as 'Nombre Articulo', "+
@@ -867,18 +865,7 @@ namespace Gestion_Inventario
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConnectionString;
-            con.Open();
-
-            string query = "select * from transacciones";
-            query += " where 1 = 1 ";
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
         {
             if (LbArticulo.Visible == false && cbxRepArt.Visible == false)
             {
@@ -892,9 +879,10 @@ namespace Gestion_Inventario
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click_1(object sender, EventArgs e)
         {
-            if (LbTipo.Visible == false && cbxRepTipo.Visible == false) {
+            if (LbTipo.Visible == false && cbxRepTipo.Visible == false)
+            {
                 LbTipo.Visible = true;
                 cbxRepTipo.Visible = true;
             }
@@ -905,7 +893,7 @@ namespace Gestion_Inventario
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click_1(object sender, EventArgs e)
         {
             if (gbFecha.Visible == false && LbDesde.Visible == false && LbHasta.Visible == false && DateDesdeRep.Visible == false && DateHastaRep.Visible == false)
             {
@@ -923,6 +911,28 @@ namespace Gestion_Inventario
                 DateDesdeRep.Visible = false;
                 DateHastaRep.Visible = false;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string estado = "";
+            if (gbFecha.Visible == false && DateDesdeRep.Visible == false && DateHastaRep.Visible == false)
+            {
+                estado = "no";
+            }
+            else
+            {
+                estado = "si";
+            }
+            Reporte r = new Reporte();
+            r.ConnectionString = this.ConnectionString;
+            r.FechaDesde = DateDesdeRep.Text;
+            r.FechaHasta = DateHastaRep.Text;
+            r.Darticulo = cbxRepArt.Text;
+            r.tipo = cbxRepTipo.Text;
+            r.estadoFecha = estado;
+            r.ShowDialog();
+            this.Hide();
         }
     }
 }
