@@ -163,6 +163,7 @@
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="Gestion_Inventario.bak" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\edmxResourcesToEmbed\GInventario.csdl" />
@@ -210,6 +211,7 @@
     <Content Include="obj\Debug\TempPE\GInventario.Designer.cs.dll" />
     <Content Include="obj\Debug\TempPE\Login.cs.dll" />
     <Content Include="obj\Debug\TempPE\Login.Designer.cs.dll" />
+    <Content Include="SQLQuery1.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
