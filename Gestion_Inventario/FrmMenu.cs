@@ -370,8 +370,13 @@ namespace Gestion_Inventario
                         {
                             EnterTextBox5();
                         }
-                        
-                        
+
+                        string query10 = "select estado_articulo from articulo where descripcion_articulo = '"+ cbxDescArtT.Text + "'";
+                        SqlCommand cmd10 = new SqlCommand(query10, Conn);
+                        var state = cmd10.ExecuteScalar();
+                        string estado = state.ToString();
+
+
                         string query4 = "select idArticulo from articulo where descripcion_articulo = '" + cbxDescArtT.Text + "'";
                         SqlCommand cmd4 = new SqlCommand(query4, Conn);
                         var ida = cmd4.ExecuteScalar();
@@ -397,15 +402,37 @@ namespace Gestion_Inventario
 
                         if (comboBox5.Text == "Salida")
                         {
-                            total = existencia - cantidad;
+                            if (estado.Equals("Activo"))
+                            {
+                                total = existencia - cantidad;
 
-                            if (total < 0 )
+                                if (total < 0)
+                                {
+                                    MessageBox.Show("No hay suficientes artículos requeridos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    textBox5.Text = "" + existencia;
+                                }
+                                else
+                                {
+                                    string query3 = "UPDATE articulo SET existencia = @a WHERE descripcion_articulo = @c";
+                                    SqlCommand cmd3 = new SqlCommand(query3, Conn);
+                                    cmd3.Parameters.Add(new SqlParameter("@a", total));
+                                    cmd3.Parameters.Add(new SqlParameter("@c", cbxDescArtT.Text));
+
+                                    MessageBox.Show(cmd.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
+                                    MessageBox.Show(cmd3.ExecuteNonQuery() + " Articulo se ha actualizado");
+                                }
+                            }else
                             {
-                                MessageBox.Show("No hay suficientes artículos requeridos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                textBox5.Text = "" + existencia;
+                                MessageBox.Show("El artículo no está activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            else
+                        }
+                        else if (comboBox5.Text == "Entrada")
+                        {
+                            if (estado.Equals("Activo"))
                             {
+                                EnterTextBox5();
+                                total = existencia + cantidad;
+
                                 string query3 = "UPDATE articulo SET existencia = @a WHERE descripcion_articulo = @c";
                                 SqlCommand cmd3 = new SqlCommand(query3, Conn);
                                 cmd3.Parameters.Add(new SqlParameter("@a", total));
@@ -413,66 +440,70 @@ namespace Gestion_Inventario
 
                                 MessageBox.Show(cmd.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
                                 MessageBox.Show(cmd3.ExecuteNonQuery() + " Articulo se ha actualizado");
-                            }
-                        }
-                        else if (comboBox5.Text == "Entrada")
-                        {
-                            EnterTextBox5();
-                            total = existencia + cantidad;
-
-                            string query3 = "UPDATE articulo SET existencia = @a WHERE descripcion_articulo = @c";
-                            SqlCommand cmd3 = new SqlCommand(query3, Conn);
-                            cmd3.Parameters.Add(new SqlParameter("@a", total));
-                            cmd3.Parameters.Add(new SqlParameter("@c", cbxDescArtT.Text));
-
-                            MessageBox.Show(cmd.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
-                            MessageBox.Show(cmd3.ExecuteNonQuery() + " Articulo se ha actualizado");
+                            }else
+                            {
+                                MessageBox.Show("El artículo no está activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }  
                         }
                         else if(comboBox5.Text == "Ajuste Costo")
                         {
-                            string query5 = "UPDATE articulo SET costoUnitario = @a WHERE descripcion_articulo = @b";
-                            SqlCommand cmd5 = new SqlCommand(query5, Conn);
-                            cmd5.Parameters.Add(new SqlParameter("@a", textBox6.Text));
-                            cmd5.Parameters.Add(new SqlParameter("@b", cbxDescArtT.Text));
-                            int x = 0;
-                            string query55 = "INSERT INTO transaccion VALUES(@articulo, @tipo, @fecha, @cantidad, @costo)";
-                            SqlCommand cmd55 = new SqlCommand(query55, Conn);
-                            cmd55.Parameters.Add(new SqlParameter("@articulo", IdArt));
-                            cmd55.Parameters.Add(new SqlParameter("@tipo", comboBox5.Text));
-                            cmd55.Parameters.Add(new SqlParameter("@fecha", Convert.ToDateTime(dateTimePicker1.Text)));
-                            cmd55.Parameters.Add(new SqlParameter("@cantidad", x));
-                            cmd55.Parameters.Add(new SqlParameter("@costo", textBox6.Text));
-                            if (Convert.ToInt32(textBox6.Text) > -1) {
-                                MessageBox.Show(cmd55.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
-                                MessageBox.Show(cmd5.ExecuteNonQuery() + " Articulo se ha actualizado");
-                            }
-                            else
+                            if (estado.Equals("Activo"))
                             {
-                                MessageBox.Show("Valor digitado no puede ser negativo", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }                           
+                                string query5 = "UPDATE articulo SET costoUnitario = @a WHERE descripcion_articulo = @b";
+                                SqlCommand cmd5 = new SqlCommand(query5, Conn);
+                                cmd5.Parameters.Add(new SqlParameter("@a", textBox6.Text));
+                                cmd5.Parameters.Add(new SqlParameter("@b", cbxDescArtT.Text));
+                                int x = 0;
+                                string query55 = "INSERT INTO transaccion VALUES(@articulo, @tipo, @fecha, @cantidad, @costo)";
+                                SqlCommand cmd55 = new SqlCommand(query55, Conn);
+                                cmd55.Parameters.Add(new SqlParameter("@articulo", IdArt));
+                                cmd55.Parameters.Add(new SqlParameter("@tipo", comboBox5.Text));
+                                cmd55.Parameters.Add(new SqlParameter("@fecha", Convert.ToDateTime(dateTimePicker1.Text)));
+                                cmd55.Parameters.Add(new SqlParameter("@cantidad", x));
+                                cmd55.Parameters.Add(new SqlParameter("@costo", textBox6.Text));
+                                if (Convert.ToInt32(textBox6.Text) > -1)
+                                {
+                                    MessageBox.Show(cmd55.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
+                                    MessageBox.Show(cmd5.ExecuteNonQuery() + " Articulo se ha actualizado");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Valor digitado no puede ser negativo", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }else
+                            {
+                                MessageBox.Show("El artículo no está activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }                       
                         }
                         else if(comboBox5.Text == "Ajuste Cantidad")
                         {
-                            string query6 = "UPDATE articulo SET existencia = @a WHERE descripcion_articulo = @b";
-                            SqlCommand cmd6 = new SqlCommand(query6, Conn);
-                            cmd6.Parameters.Add(new SqlParameter("@a", textBox5.Text));
-                            cmd6.Parameters.Add(new SqlParameter("@b", cbxDescArtT.Text));
-                            int x = 0;
-                            string query66 = "INSERT INTO transaccion VALUES(@articulo, @tipo, @fecha, @cantidad, @costo)";
-                            SqlCommand cmd66 = new SqlCommand(query66, Conn);
-                            cmd66.Parameters.Add(new SqlParameter("@articulo", IdArt));
-                            cmd66.Parameters.Add(new SqlParameter("@tipo", comboBox5.Text));
-                            cmd66.Parameters.Add(new SqlParameter("@fecha", Convert.ToDateTime(dateTimePicker1.Text)));
-                            cmd66.Parameters.Add(new SqlParameter("@cantidad", textBox5.Text));
-                            cmd66.Parameters.Add(new SqlParameter("@costo", x));
-
-                            if(Convert.ToInt32(textBox5.Text) > 0)
+                            if (estado.Equals("Activo"))
                             {
-                                MessageBox.Show(cmd66.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
-                                MessageBox.Show(cmd6.ExecuteNonQuery() + " Articulo se ha actualizado");
+                                string query6 = "UPDATE articulo SET existencia = @a WHERE descripcion_articulo = @b";
+                                SqlCommand cmd6 = new SqlCommand(query6, Conn);
+                                cmd6.Parameters.Add(new SqlParameter("@a", textBox5.Text));
+                                cmd6.Parameters.Add(new SqlParameter("@b", cbxDescArtT.Text));
+                                int x = 0;
+                                string query66 = "INSERT INTO transaccion VALUES(@articulo, @tipo, @fecha, @cantidad, @costo)";
+                                SqlCommand cmd66 = new SqlCommand(query66, Conn);
+                                cmd66.Parameters.Add(new SqlParameter("@articulo", IdArt));
+                                cmd66.Parameters.Add(new SqlParameter("@tipo", comboBox5.Text));
+                                cmd66.Parameters.Add(new SqlParameter("@fecha", Convert.ToDateTime(dateTimePicker1.Text)));
+                                cmd66.Parameters.Add(new SqlParameter("@cantidad", textBox5.Text));
+                                cmd66.Parameters.Add(new SqlParameter("@costo", x));
+
+                                if (Convert.ToInt32(textBox5.Text) > 0)
+                                {
+                                    MessageBox.Show(cmd66.ExecuteNonQuery() + " Transaccion Guardado Correctamente");
+                                    MessageBox.Show(cmd6.ExecuteNonQuery() + " Articulo se ha actualizado");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Valor digitado debe ser positivo", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }else
                             {
-                                MessageBox.Show("Valor digitado debe ser positivo", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);   
+                                MessageBox.Show("El artículo no está activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             } 
                         }
 
