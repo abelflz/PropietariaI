@@ -35,7 +35,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
-            this.cbxArtD = new System.Windows.Forms.ComboBox();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -135,7 +134,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbxEstado);
-            this.groupBox1.Controls.Add(this.cbxArtD);
             this.groupBox1.Controls.Add(this.txtFilter);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -159,16 +157,6 @@
             this.cbxEstado.Size = new System.Drawing.Size(178, 21);
             this.cbxEstado.TabIndex = 14;
             this.cbxEstado.Visible = false;
-            // 
-            // cbxArtD
-            // 
-            this.cbxArtD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxArtD.FormattingEnabled = true;
-            this.cbxArtD.Location = new System.Drawing.Point(11, 114);
-            this.cbxArtD.Name = "cbxArtD";
-            this.cbxArtD.Size = new System.Drawing.Size(178, 21);
-            this.cbxArtD.TabIndex = 13;
-            this.cbxArtD.Visible = false;
             // 
             // txtFilter
             // 
@@ -430,7 +418,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(948, 490);
+            this.tabPage3.Size = new System.Drawing.Size(957, 517);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Tipo Inventario y Deslogueo";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -513,7 +501,6 @@
         public System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Button Logout;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cbxArtD;
         private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox4;

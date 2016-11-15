@@ -39,7 +39,6 @@ namespace Gestion_Inventario
 
             while (sqlReader.Read())
             {
-                cbxArtD.Items.Add(sqlReader["descripcion_articulo"].ToString());
                 cbxRepArt.Items.Add(sqlReader["descripcion_articulo"].ToString());
             }
         }
@@ -112,7 +111,7 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Nombre Articulo")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + cbxArtD.Text + "%' ORDER BY a.descripcion_articulo", Conn);
+                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.descripcion_articulo like '%" + txtFilter.Text + "%' ORDER BY a.descripcion_articulo", Conn);
 
                 DataTable data = new DataTable();
                 sda.Fill(data);
@@ -228,18 +227,11 @@ namespace Gestion_Inventario
             switch (comboBox1.SelectedIndex)
             {
                 case 3:
-                    cbxArtD.Visible = false;
                     txtFilter.Visible = false;
                     cbxEstado.Visible = true;
                     break;
-                case 1:
-                    txtFilter.Visible = false;
-                    cbxEstado.Visible = false;
-                    cbxArtD.Visible = true;
-                    break;
                 default:
                     cbxEstado.Visible = false;
-                    cbxArtD.Visible = false;
                     txtFilter.Visible = true;
                     break;
             }

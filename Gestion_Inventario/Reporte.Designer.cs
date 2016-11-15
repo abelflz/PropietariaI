@@ -37,12 +37,12 @@
             this.rpvReporte.LocalReport.ReportEmbeddedResource = "Gestion_Inventario.Report1.rdlc";
             this.rpvReporte.Location = new System.Drawing.Point(0, 0);
             this.rpvReporte.Name = "rpvReporte";
-            this.rpvReporte.Size = new System.Drawing.Size(647, 410);
+            this.rpvReporte.Size = new System.Drawing.Size(1002, 470);
             this.rpvReporte.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(265, 429);
+            this.button1.Location = new System.Drawing.Point(469, 476);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 464);
+            this.ClientSize = new System.Drawing.Size(1005, 511);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rpvReporte);
             this.Name = "Reporte";
