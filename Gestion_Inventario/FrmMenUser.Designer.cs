@@ -289,6 +289,7 @@
             this.cbxRepTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRepTipo.FormattingEnabled = true;
             this.cbxRepTipo.Items.AddRange(new object[] {
+            "",
             "Entrada",
             "Salida",
             "Ajuste Costo",

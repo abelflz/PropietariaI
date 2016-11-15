@@ -101,13 +101,20 @@ namespace Gestion_Inventario
 
             if (comboBox1.Text == "ID")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.idArticulo = '" + txtFilter.Text + "'", Conn);
+                try
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.idArticulo like '%" + txtFilter.Text + "%'", Conn);
 
 
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
+                    DataTable data = new DataTable();
+                    sda.Fill(data);
+                    dataGridView1.DataSource = data;
+                    dataGridView1.Refresh();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Valor no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (comboBox1.Text == "Nombre Articulo")
             {
@@ -154,17 +161,25 @@ namespace Gestion_Inventario
             }
             else if (comboBox1.Text == "Existencia")
             {
-                if(Convert.ToDouble(txtFilter.Text) < 0)
+                try
                 {
-                    MessageBox.Show("No se puede digitar un valor negativo");
-                }else
+                    if (Convert.ToDouble(txtFilter.Text) < 0)
+                    {
+                        MessageBox.Show("No se puede digitar un valor negativo");
+                    }
+                    else
+                    {
+                        SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
+                        DataTable data = new DataTable();
+                        sda.Fill(data);
+                        dataGridView1.DataSource = data;
+                        dataGridView1.Refresh();
+                    }
+                }
+                catch (Exception)
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
-                    DataTable data = new DataTable();
-                    sda.Fill(data);
-                    dataGridView1.DataSource = data;
-                    dataGridView1.Refresh();
-                }  
+                    MessageBox.Show("Valor no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             Conn.Close();
@@ -296,6 +311,7 @@ namespace Gestion_Inventario
             {
                 LbArticulo.Visible = true;
                 cbxRepArt.Visible = true;
+                cbxRepArt.Items.Add("");
             }
             else
             {

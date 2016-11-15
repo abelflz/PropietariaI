@@ -366,7 +366,7 @@ namespace Gestion_Inventario
                         {
                             textBox6.Text = "0";
                         }
-                        else if (comboBox5.Text == "Salida" || comboBox5.Text != "Entrada")
+                        else if (comboBox5.Text == "Salida" || comboBox5.Text == "Entrada")
                         {
                             EnterTextBox5();
                         }
@@ -675,9 +675,6 @@ namespace Gestion_Inventario
 
                             textBox6.Text = Convert.ToString(dCosto * CantidadPedida);
                             Conn.Close();
-                        }else
-                        {
-                            
                         }
                     }
                 }
@@ -788,6 +785,7 @@ namespace Gestion_Inventario
             {
                 LbArticulo.Visible = true;
                 cbxRepArt.Visible = true;
+                cbxRepArt.Items.Add("");
             }
             else
             {
@@ -869,13 +867,20 @@ namespace Gestion_Inventario
 
             if (cbxCriterio.Text == "ID")
             {
-                SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.idArticulo = '" + txtFilter.Text + "'", Conn);
+                try
+                {
+                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.idArticulo like '%" + txtFilter.Text + "%'", Conn);
 
 
-                DataTable data = new DataTable();
-                sda.Fill(data);
-                dataGridView1.DataSource = data;
-                dataGridView1.Refresh();
+                    DataTable data = new DataTable();
+                    sda.Fill(data);
+                    dataGridView1.DataSource = data;
+                    dataGridView1.Refresh();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Valor digitado no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (cbxCriterio.Text == "Nombre Articulo")
             {
@@ -921,17 +926,24 @@ namespace Gestion_Inventario
             }
             else if (cbxCriterio.Text == "Existencia")
             {
-                if (Convert.ToDouble(txtFilter.Text) < 0)
+                try
                 {
-                    MessageBox.Show("Valor digitado debe ser entero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Convert.ToDouble(txtFilter.Text) < 0)
+                    {
+                        MessageBox.Show("Valor digitado debe ser entero positivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
+                        DataTable data = new DataTable();
+                        sda.Fill(data);
+                        dataGridView1.DataSource = data;
+                        dataGridView1.Refresh();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter(query + " WHERE a.existencia like '%" + txtFilter.Text + "%' order by a.existencia", Conn);
-                    DataTable data = new DataTable();
-                    sda.Fill(data);
-                    dataGridView1.DataSource = data;
-                    dataGridView1.Refresh();
+                    MessageBox.Show("Valor digitado no válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
 

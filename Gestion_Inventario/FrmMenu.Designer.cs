@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gBusqueda = new System.Windows.Forms.GroupBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.All = new System.Windows.Forms.Button();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbxCriterio = new System.Windows.Forms.ComboBox();
+            this.Find = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Logout = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -103,17 +113,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.gBusqueda = new System.Windows.Forms.GroupBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.All = new System.Windows.Forms.Button();
-            this.cbxEstado = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbxCriterio = new System.Windows.Forms.ComboBox();
-            this.Find = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.gBusqueda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -128,9 +131,6 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            this.gBusqueda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -145,6 +145,122 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1036, 515);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.gBusqueda);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1028, 489);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Consulta de Artículos";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // gBusqueda
+            // 
+            this.gBusqueda.Controls.Add(this.txtFilter);
+            this.gBusqueda.Controls.Add(this.All);
+            this.gBusqueda.Controls.Add(this.cbxEstado);
+            this.gBusqueda.Controls.Add(this.label11);
+            this.gBusqueda.Controls.Add(this.cbxCriterio);
+            this.gBusqueda.Controls.Add(this.Find);
+            this.gBusqueda.Location = new System.Drawing.Point(644, 104);
+            this.gBusqueda.Name = "gBusqueda";
+            this.gBusqueda.Size = new System.Drawing.Size(221, 272);
+            this.gBusqueda.TabIndex = 16;
+            this.gBusqueda.TabStop = false;
+            this.gBusqueda.Text = "Búsqueda";
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Location = new System.Drawing.Point(11, 119);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(190, 20);
+            this.txtFilter.TabIndex = 15;
+            this.txtFilter.Visible = false;
+            // 
+            // All
+            // 
+            this.All.Location = new System.Drawing.Point(44, 227);
+            this.All.Name = "All";
+            this.All.Size = new System.Drawing.Size(134, 23);
+            this.All.TabIndex = 6;
+            this.All.Text = "Ver Todos/Actualizar";
+            this.All.UseVisualStyleBackColor = true;
+            this.All.Click += new System.EventHandler(this.All_Click);
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbxEstado.Location = new System.Drawing.Point(11, 119);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(190, 21);
+            this.cbxEstado.TabIndex = 14;
+            this.cbxEstado.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 47);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Criterio";
+            // 
+            // cbxCriterio
+            // 
+            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCriterio.FormattingEnabled = true;
+            this.cbxCriterio.Items.AddRange(new object[] {
+            "ID",
+            "Nombre Articulo",
+            "Costo Unitario",
+            "Estado",
+            "Existencia"});
+            this.cbxCriterio.Location = new System.Drawing.Point(11, 72);
+            this.cbxCriterio.Name = "cbxCriterio";
+            this.cbxCriterio.Size = new System.Drawing.Size(190, 21);
+            this.cbxCriterio.TabIndex = 12;
+            this.cbxCriterio.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // Find
+            // 
+            this.Find.Location = new System.Drawing.Point(71, 173);
+            this.Find.Name = "Find";
+            this.Find.Size = new System.Drawing.Size(75, 23);
+            this.Find.TabIndex = 10;
+            this.Find.Text = "Buscar";
+            this.Find.UseVisualStyleBackColor = true;
+            this.Find.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(203, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(284, 38);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Consulta de Articulos";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Location = new System.Drawing.Point(126, 65);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(436, 346);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -743,6 +859,7 @@
             this.cbxRepTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRepTipo.FormattingEnabled = true;
             this.cbxRepTipo.Items.AddRange(new object[] {
+            "",
             "Entrada",
             "Salida",
             "Ajuste Costo",
@@ -920,122 +1037,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(288, 112);
             this.dataGridView3.TabIndex = 0;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.gBusqueda);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1028, 489);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Consulta de Artículos";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // gBusqueda
-            // 
-            this.gBusqueda.Controls.Add(this.txtFilter);
-            this.gBusqueda.Controls.Add(this.All);
-            this.gBusqueda.Controls.Add(this.cbxEstado);
-            this.gBusqueda.Controls.Add(this.label11);
-            this.gBusqueda.Controls.Add(this.cbxCriterio);
-            this.gBusqueda.Controls.Add(this.Find);
-            this.gBusqueda.Location = new System.Drawing.Point(644, 104);
-            this.gBusqueda.Name = "gBusqueda";
-            this.gBusqueda.Size = new System.Drawing.Size(221, 272);
-            this.gBusqueda.TabIndex = 16;
-            this.gBusqueda.TabStop = false;
-            this.gBusqueda.Text = "Búsqueda";
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.Location = new System.Drawing.Point(11, 120);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(190, 20);
-            this.txtFilter.TabIndex = 15;
-            this.txtFilter.Visible = false;
-            // 
-            // All
-            // 
-            this.All.Location = new System.Drawing.Point(44, 227);
-            this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(134, 23);
-            this.All.TabIndex = 6;
-            this.All.Text = "Ver Todos/Actualizar";
-            this.All.UseVisualStyleBackColor = true;
-            this.All.Click += new System.EventHandler(this.All_Click);
-            // 
-            // cbxEstado
-            // 
-            this.cbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxEstado.FormattingEnabled = true;
-            this.cbxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbxEstado.Location = new System.Drawing.Point(11, 119);
-            this.cbxEstado.Name = "cbxEstado";
-            this.cbxEstado.Size = new System.Drawing.Size(190, 21);
-            this.cbxEstado.TabIndex = 14;
-            this.cbxEstado.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 47);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Criterio";
-            // 
-            // cbxCriterio
-            // 
-            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCriterio.FormattingEnabled = true;
-            this.cbxCriterio.Items.AddRange(new object[] {
-            "ID",
-            "Nombre Articulo",
-            "Costo Unitario",
-            "Estado",
-            "Existencia"});
-            this.cbxCriterio.Location = new System.Drawing.Point(11, 72);
-            this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(190, 21);
-            this.cbxCriterio.TabIndex = 12;
-            this.cbxCriterio.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // Find
-            // 
-            this.Find.Location = new System.Drawing.Point(71, 173);
-            this.Find.Name = "Find";
-            this.Find.Size = new System.Drawing.Size(75, 23);
-            this.Find.TabIndex = 10;
-            this.Find.Text = "Buscar";
-            this.Find.UseVisualStyleBackColor = true;
-            this.Find.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(203, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(284, 38);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Consulta de Articulos";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Location = new System.Drawing.Point(126, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(436, 346);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // FrmMenu
             // 
             this.AllowDrop = true;
@@ -1048,6 +1049,11 @@
             this.Text = "Gestión de Inventario";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.gBusqueda.ResumeLayout(false);
+            this.gBusqueda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1072,11 +1078,6 @@
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.gBusqueda.ResumeLayout(false);
-            this.gBusqueda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
