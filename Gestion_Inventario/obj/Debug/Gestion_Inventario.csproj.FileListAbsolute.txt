@@ -17,3 +17,22 @@ C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_I
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.Reporte.resources
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.cache
 C:\Users\Abel\documents\visual studio 2015\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.compiled
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\Gestion_Inventario.exe.config
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.exe
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.pdb
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\Gestion_Inventario.exe
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\Gestion_Inventario.pdb
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\EntityFramework.xml
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.csprojResolveAssemblyReference.cache
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.Form1.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarArticulo.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarTI.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmEditarTransaccion.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmMenu.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.FrmMenUser.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.Properties.Resources.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.Reporte.resources
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\Gestion_Inventario.csproj.GenerateResource.Cache
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.cache
+C:\Users\abelf\Desktop\Programación, PROYECTOS, IMPORTANTISIMO\Visual Studio Projects\Projects\Gestion_Inventario\Gestion_Inventario\obj\Debug\RdlCompile.compiled
